@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useRoute } from "vue-router"
 import { useAppStore } from "@/stores/app"
 import { usePermissionStore } from "@/stores/permission"
-import variables from '@/styles/variables.module.scss'
+import variables from '@/styles/_variables.module.scss'
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
 

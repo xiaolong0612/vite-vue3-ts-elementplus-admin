@@ -15,3 +15,12 @@ export interface LogoutReq {
   token: string;
 }
 
+export interface LoginLogs {
+  list: Array<LoginLog>,
+  total: number
+}
+export interface LoginLog {
+  name: string,
+  datetime: string,
+  ip: string
+}

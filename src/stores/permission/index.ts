@@ -1,8 +1,14 @@
+/*
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-10 17:50:24
+ * @LastEditTime: 2023-03-12 13:05:13
+ * @LastEditors: Amber
+ */
 import { defineStore } from 'pinia'
 import Names from '../name'
-import { asyncRoutes, constantRoutes } from '@/router'
+import router, { asyncRoutes, constantRoutes } from '@/router'
 import type { RouteRecordRaw, RouteMeta } from 'vue-router'
-
 
 // interface RouteMetaRoles extends RouteMeta {
 //   roles: Array<string>
@@ -63,6 +69,11 @@ export const usePermissionStore = defineStore(Names.PERMISSION, {
         this.isUpdate = true
         resolve(accessedRoutes)
       })
+    },
+    pushRoutes(routes: RouteRecordRaw[]) {
+      routes.map(item => {
+        router.addRoute(item)
+      });
     }
   },
   persist: true

@@ -1,7 +1,7 @@
 /**
  * Parse the time to string
  */
-export function parseTime(time: string | number | Date, cFormat: string | null) {
+export function parseTime(time: string | number | Date, cFormat?: string | null) {
   if (arguments.length === 0 || !time) {
     return null
   }

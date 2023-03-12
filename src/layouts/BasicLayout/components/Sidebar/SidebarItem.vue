@@ -16,9 +16,6 @@ const props = withDefaults(defineProps<Props>(), {
   basePath: ''
 })
 
-// interface OnlyOneChild extends Routes {
-//   noShowingChildren: boolean
-// }
 let onlyOneChild = ref<RouteRecordRaw>()
 const hasOneShowingChild = (children:RouteRecordRaw[] = [], parent:RouteRecordRaw[]) => {
   const showingChildren = children.filter(item => {
