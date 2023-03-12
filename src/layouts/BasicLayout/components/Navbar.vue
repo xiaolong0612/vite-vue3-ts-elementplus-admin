@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { useAppStore } from '@/stores/app'
 import { useAdminStore } from '@/stores/admin'
 import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Search from '@/components/HeaderSearch/index.vue'
+
+const router = useRouter()
 const toggleSideBar = () => {
   app.sidebar.opened = !app.sidebar.opened
 }
@@ -11,7 +14,9 @@ const app = useAppStore()
 const admin = useAdminStore()
 
 const logout = () => {
-  admin.logout()
+  admin.logout().then(() => {
+    router.replace('/login')
+  })
 }
 </script>
 <template>
@@ -22,7 +27,7 @@ const logout = () => {
     <div class="right-menu">
       <search id="header-search" class="right-menu-item" />
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
-        <div class="avatar-wrapper">
+        <div class="avatar-wrapper flex items-end">
           <img :src="admin.avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
           <el-icon><CaretBottom /></el-icon>
         </div>
@@ -36,9 +41,6 @@ const logout = () => {
             </router-link>
             <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
               <el-dropdown-item>Github</el-dropdown-item>
-            </a>
-            <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-              <el-dropdown-item>Docs</el-dropdown-item>
             </a>
             <el-dropdown-item divided @click="logout">
               <span style="display:block;">Log Out</span>

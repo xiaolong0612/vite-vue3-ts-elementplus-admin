@@ -1,9 +1,13 @@
+<script setup lang="ts">
+import CountTo from "@/components/CountTo/index.vue"
+</script>
+
 <template>
   <el-row :gutter="40" class="panel-group">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+      <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-people">
-          <svg-icon icon-class="peoples" class-name="card-panel-icon" />
+          <el-icon class="card-panel-icon"><DataLine /></el-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -14,9 +18,9 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('messages')">
+      <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon icon-class="message" class-name="card-panel-icon" />
+          <el-icon class="card-panel-icon"><ChatDotRound /></el-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -27,9 +31,9 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('purchases')">
+      <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon icon-class="money" class-name="card-panel-icon" />
+          <el-icon class="card-panel-icon"><ShoppingTrolley /></el-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -40,9 +44,9 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('shoppings')">
+      <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon icon-class="shopping" class-name="card-panel-icon" />
+          <el-icon class="card-panel-icon"><ShoppingBag /></el-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
@@ -55,22 +59,8 @@
   </el-row>
 </template>
 
-<script>
-import CountTo from 'vue-count-to'
-
-export default {
-  components: {
-    CountTo
-  },
-  methods: {
-    handleSetLineChartData(type) {
-      this.$emit('handleSetLineChartData', type)
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
+@import "@/styles/variables.module.scss";
 .panel-group {
   margin-top: 18px;
 
@@ -86,7 +76,8 @@ export default {
     overflow: hidden;
     color: #666;
     background: #fff;
-    box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
+    border-radius: 6px;
+    box-shadow: $shadowLight;
     border-color: rgba(0, 0, 0, .05);
 
     &:hover {

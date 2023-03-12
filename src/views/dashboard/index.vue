@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import { useAdminStore } from "@/stores/admin";
+import adminDashboard from './admin/index.vue'
+import editorDashboard from './editor/index.vue'
+
+const admin = useAdminStore()
+const currentRole = admin.roles.includes('admin') ? adminDashboard : editorDashboard
+</script>
+
 <template>
-  <div>dashboard</div>
+  <div class="dashboard-container">
+    <component :is="currentRole" />
+  </div>
 </template>

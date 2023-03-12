@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-10 17:50:24
+ * @LastEditTime: 2023-03-12 13:09:32
+ * @LastEditors: Amber
+ */
 import router from './router'
 import type { RouteLocationNormalized, RouteRecordRaw } from "vue-router"
 import { getStoreItem } from '@/utils'
@@ -31,10 +38,11 @@ router.beforeEach(async(to: RouteLocationNormalized, _: RouteLocationNormalized,
       } else {
         try {
           // 动态路由
-          const accessRoutes = await permission.generateRoutes(getStoreItem(localStorage.ADMIN, 'roles')) as RouteRecordRaw
-          router.addRoute(accessRoutes)
+          const accessRoutes = await permission.generateRoutes(getStoreItem(localStorage.ADMIN, 'roles')) as RouteRecordRaw[]
+          permission.pushRoutes(accessRoutes)
           next({ ...to, replace: true })
         } catch (error) {
+          console.log(error)
           // 退出登陆
           ElMessage.error(error || 'Has Error')
           next(`/login?redirect=${to.path}`)

@@ -1,6 +1,13 @@
+/*
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-10 17:50:24
+ * @LastEditTime: 2023-03-11 21:47:30
+ * @LastEditors: Amber
+ */
 import type { responseConfig } from "@/types/mock"
 import { paramObj } from '../util'
-import { tokens } from "./db"
+import { tokens, loginLogs } from "./db"
 
 const adminaApi = [
   // 登陆接口
@@ -40,6 +47,18 @@ const adminaApi = [
         code: -1,
         message: '登出失败，请重试~',
         data: {}
+      }
+    }
+  },
+  {
+    url: '/api/user/logs',
+    type: 'post',
+    response: (config: responseConfig) => {
+      const { page, limit } = paramObj(config.body)
+      return {
+        code: 200,
+        message: '数据获取成功',
+        data: loginLogs(page, limit)
       }
     }
   }

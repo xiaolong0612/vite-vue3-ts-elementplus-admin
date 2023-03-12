@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-10 17:50:24
+ * @LastEditTime: 2023-03-11 20:42:31
+ * @LastEditors: Amber
+-->
 <script setup lang="ts">
 import { ref, defineProps } from "vue"
 const title = ref<string>('Vue Element Admin')
@@ -7,7 +14,7 @@ const props = defineProps<{
 }>()
 </script>
 <template>
-  <div class="sidebar-logo-container" :class="{'collapse':props.collapse}">
+  <div class="sidebar-logo-container" :class="{'is-collapse':props.collapse}">
     <transition name="sidebarLogoFade">
       <router-link v-if="props.collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img v-if="logo" :src="logo" class="sidebar-logo">
@@ -43,7 +50,9 @@ const props = defineProps<{
   & .sidebar-logo-link {
     height: 100%;
     width: 100%;
-
+    display: flex;
+    place-items: center;
+    place-content: center;
     & .sidebar-logo {
       width: 32px;
       height: 32px;
@@ -63,7 +72,7 @@ const props = defineProps<{
     }
   }
 
-  &.collapse {
+  &.is-collapse {
     .sidebar-logo {
       margin-right: 0px;
     }

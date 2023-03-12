@@ -6,7 +6,6 @@ export const constantRoutes = [
   {
     path: '/redirect',
     component: basicLayout,
-    hidden: true,
     children: [
       {
         path: '/redirect/:path(.*)',
@@ -15,9 +14,11 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/404',
+    component: () => import('@/views/error-page/404.vue'),
+  },
+  {
     path: '/login',
-    name: 'login',
-    hidden: true,
     component: () => import('../views/login/index.vue')
   },
   {
@@ -32,30 +33,67 @@ export const constantRoutes = [
         meta: { title: 'Dashboard', icon: 'Monitor', affix: true }
       }
     ]
-  },
+  }
+] as RouteRecordRaw[]
+
+export const asyncRoutes = [
   {
     path: '/permission',
-    redirect: '/permission/index',
     component: basicLayout,
-    meta: { title: 'Permission', icon: 'User' },
+    meta: {
+      title: 'Permission',
+      icon: 'User',
+      roles: ['admin', 'editor']
+    },
     children: [
       {
         path: 'index',
-        name: 'Permission',
         component: () => import('@/views/permission/index.vue'),
-        meta: { title: 'Permission' }
+        name: 'IndexPermission',
+        meta: {
+          title: 'Info',
+          roles: ['admin']
+        }
       },
       {
-        path: 'two',
-        name: 'Permissiontwo',
-        component: () => import('@/views/permission/index.vue'),
-        meta: { title: 'Permissiontwo' }
+        path: 'directive',
+        component: () => import('@/views/permission/directive.vue'),
+        name: 'DirectivePermission',
+        meta: {
+          title: 'Directive'
+        }
       },
+      {
+        path: 'role',
+        component: () => import('@/views/permission/role.vue'),
+        name: 'RolePermission',
+        meta: {
+          title: 'Role',
+          roles: ['admin']
+        }
+      }
     ]
   },
+  {
+    path: '/error',
+    component: basicLayout,
+    redirect: '/error/404',
+    name: 'ErrorPages',
+    meta: {
+      title: 'Error Pages',
+      icon: 'CloseBold'
+    },
+    children: [
+      {
+        path: '404',
+        component: () => import('@/views/error-page/404.vue'),
+        name: 'Page404',
+        meta: { title: '404', noCache: true }
+      }
+    ]
+  },
+  { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
 ] as RouteRecordRaw[]
-
-export const asyncRoutes = [] as RouteRecordRaw[]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
