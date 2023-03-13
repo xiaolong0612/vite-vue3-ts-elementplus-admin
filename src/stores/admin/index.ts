@@ -9,7 +9,7 @@ import pinia from '@/stores'
 import { defineStore } from 'pinia'
 import Names from '../name'
 import { adminLogin, adminLogout } from "@/api/admin"
-import type { MyResponseType } from "@/types/axios"
+import type { RootResponseType } from "@/types/axios"
 import type { LoginReq } from "@/api/admin/types"
 import { usePermissionStore } from "@/stores/permission"
 import { getStoreItem } from '@/utils'
@@ -36,7 +36,7 @@ export const useAdminStore = defineStore(Names.ADMIN, {
   // methods
   actions: {
     login(userInfo: LoginReq) {
-      return new Promise<MyResponseType>((resolve, reject) => {
+      return new Promise<RootResponseType>((resolve, reject) => {
         adminLogin(userInfo).then(result => {
           if (result.code === 200) {
             this.name = result.data.name
@@ -56,7 +56,7 @@ export const useAdminStore = defineStore(Names.ADMIN, {
       })
     },
     logout() {
-      return new Promise<MyResponseType>((resolve, reject) => {
+      return new Promise<RootResponseType>((resolve, reject) => {
         adminLogout({token: this.token}).then(result => {
           if (result.code === 200) {
             this.resetToken()

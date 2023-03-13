@@ -25,12 +25,14 @@ export const constantRoutes = [
     path: '/',
     component: basicLayout,
     redirect: '/dashboard',
+    name: 'Dashboard',
+    meta: { title: 'Dashboard', icon: 'Monitor', affix: true },
     children: [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'Monitor', affix: true }
+        meta: { title: 'Dashboard' }
       }
     ]
   }
@@ -65,7 +67,7 @@ export const asyncRoutes = [
       },
       {
         path: 'role',
-        component: () => import('@/views/permission/role.vue'),
+        component: () => import('@/views/permission/role/index.vue'),
         name: 'RolePermission',
         meta: {
           title: 'Role',
@@ -92,7 +94,7 @@ export const asyncRoutes = [
       }
     ]
   },
-  { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
+  { path: '/:catchAll(.*)', redirect: '/404' }
 ] as RouteRecordRaw[]
 
 const router = createRouter({

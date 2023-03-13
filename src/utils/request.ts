@@ -1,15 +1,15 @@
 import axios from 'axios'
 import type { AxiosRequestConfig } from 'axios'
-import type { MyResponseType } from '@/types/axios'
+import type { RootResponseType } from '@/types/axios'
 import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
   baseURL: import.meta.env.BASE_URL
 })
 
-const request = async <T = any>(config: AxiosRequestConfig): Promise<MyResponseType<T>> => {
+const request = async <T = any>(config: AxiosRequestConfig): Promise<RootResponseType<T>> => {
   try {
-    const { data } = await instance.request<MyResponseType<T>>(config)
+    const { data } = await instance.request<RootResponseType<T>>(config)
     console.log(data)
     // success
     if ([200].includes(data.code)) {
