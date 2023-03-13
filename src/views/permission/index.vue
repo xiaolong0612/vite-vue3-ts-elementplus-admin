@@ -5,7 +5,7 @@ const admin = useAdminStore()
 </script>
 
 <template>
-  <el-row>
+  <el-row class="app-container">
     <el-col :sm="24" :md="12" :lg="8" :xl="8">
       <el-card>
         <el-form

@@ -2,14 +2,14 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-11 21:47:30
+ * @LastEditTime: 2023-03-12 23:09:33
  * @LastEditors: Amber
  */
 import type { responseConfig } from "@/types/mock"
 import { paramObj } from '../util'
 import { tokens, loginLogs } from "./db"
 
-const adminaApi = [
+const adminApi = [
   // 登陆接口
   {
     url: '/api/user/login',
@@ -63,4 +63,4 @@ const adminaApi = [
     }
   }
 ]
-export default adminaApi
+export default adminApi

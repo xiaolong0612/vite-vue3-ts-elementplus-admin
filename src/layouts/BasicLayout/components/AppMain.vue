@@ -1,12 +1,17 @@
+<!--
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-12 16:22:15
+ * @LastEditTime: 2023-03-12 20:26:33
+ * @LastEditors: Amber
+-->
 <template>
   <section class="app-main">
-    <div style="padding: 30px;">
-      <transition name="fade-transform" mode="out-in">
-        <keep-alive :include="cachedViews">
-          <router-view :key="key" />
-        </keep-alive>
-      </transition>
-    </div>
+    <transition name="fade-transform" mode="out-in">
+      <keep-alive :include="cachedViews">
+        <router-view :key="key" />
+      </keep-alive>
+    </transition>
   </section>
 </template>
 <script setup lang="ts">

@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-12 16:22:15
+ * @LastEditTime: 2023-03-12 20:31:12
+ * @LastEditors: Amber
+-->
 <script setup lang="ts">
 import { useAdminStore } from "@/stores/admin";
 import adminDashboard from './admin/index.vue'
@@ -8,7 +15,7 @@ const currentRole = admin.roles.includes('admin') ? adminDashboard : editorDashb
 </script>
 
 <template>
-  <div class="dashboard-container">
+  <div class="dashboard-container app-container">
     <component :is="currentRole" />
   </div>
 </template>

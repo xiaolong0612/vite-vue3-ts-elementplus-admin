@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 21:14:25
- * @LastEditTime: 2023-03-12 14:56:29
+ * @LastEditTime: 2023-03-12 20:36:59
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
@@ -16,7 +16,7 @@ import DependsTable from './components/DependsTable.vue'
 <template>
   <PanelGroup />
   <DependsTable />
-  <el-row :gutter="40" class="panel-group">
+  <el-row :gutter="40" class="panel-group mt-8">
     <el-col :xs="24" :sm="24" :lg="12">
       <LoginLog />
     </el-col>
@@ -28,8 +28,3 @@ import DependsTable from './components/DependsTable.vue'
     </el-col>
   </el-row>
 </template>
-<style scoped lang="scss">
-.panel-group{
-  margin-top: 30px;
-}
-</style>

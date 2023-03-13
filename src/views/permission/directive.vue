@@ -3,7 +3,7 @@
   * @Author: Amber
   * @Date: 2021-01-08 19:32:27
  * @LastEditors: Amber
- * @LastEditTime: 2023-03-12 12:36:36
+ * @LastEditTime: 2023-03-12 20:30:11
 -->
 <script setup lang="ts">
 import { computed, ref } from 'vue'
@@ -32,7 +32,7 @@ const currentRole = computed({
 
 <template>
   <div class="app-container">
-    <el-card style="margin-top:30px;" :key="key">
+    <el-card :key="key">
       <el-row>
         <el-col :sm="24" :md="12" :lg="12" :xl="12">
           <el-form

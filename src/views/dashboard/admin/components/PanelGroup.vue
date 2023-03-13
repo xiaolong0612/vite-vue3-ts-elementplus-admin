@@ -62,7 +62,6 @@ import CountTo from "@/components/CountTo/index.vue"
 <style lang="scss" scoped>
 @import "@/styles/variables.module.scss";
 .panel-group {
-  margin-top: 18px;
 
   .card-panel-col {
     margin-bottom: 32px;
