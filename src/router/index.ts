@@ -85,6 +85,27 @@ export const asyncRoutes = [
   errorRouter,
   zipRouter,
   clipboardRouter,
+  {
+    path: '/pdf',
+    component: basicLayout,
+    redirect: '/pdf/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/pdf/index.vue'),
+        name: 'PDF',
+        meta: {
+          title: 'PDF',
+          icon: 'DocumentChecked'
+        }
+      }
+    ]
+  },
+  {
+    path: '/pdf-download-example',
+    component: () => import('@/views/pdf/download.vue'),
+    meta: { hidden: true }
+  },
   { path: '/:catchAll(.*)', redirect: '/404' }
 ] as RouteRecordRaw[]
 
