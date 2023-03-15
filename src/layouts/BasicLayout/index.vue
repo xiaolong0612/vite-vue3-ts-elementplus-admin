@@ -2,11 +2,11 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-15 11:08:16
+ * @LastEditTime: 2023-03-15 15:32:42
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeMount, onBeforeUnmount, onMounted } from 'vue'
 import { useAppStore } from '@/stores/app'
 import AppMain from "./components/AppMain.vue"
 import sidebar from './components/Sidebar/index.vue'
@@ -20,11 +20,46 @@ let classObj = computed(() => {
     hideSidebar: !app.sidebar.opened,
     openSidebar: app.sidebar.opened,
     withoutAnimation: app.sidebar.withoutAnimation,
+    mobile: app.device === DeviceType.Mobile
+  }
+})
+const handleClickOutside = () => {
+  app.closeSideBar(false)
+}
+
+const { body } = document
+const WIDTH = 992
+
+onMounted(() => {
+  if (_isMobile()) {
+    app.toggleDevice(DeviceType.Mobile)
+    app.closeSideBar(true)
   }
 })
 
-const handleClickOutside = () => {
-  app.closeSideBar(false)
+onBeforeMount(() => {
+  window.addEventListener('resize', () => {
+    _resizeHandler()
+  })
+})
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', () => {
+    _resizeHandler()
+  })
+})
+const _isMobile = () => {
+  const rect = body.getBoundingClientRect()
+  return rect.width - 1 < WIDTH
+}
+const _resizeHandler = () => {
+  if (!document.hidden) {
+    const isMobile = _isMobile()
+    app.toggleDevice(isMobile ? DeviceType.Mobile : DeviceType.Desktop)
+
+    if (isMobile) {
+      app.closeSideBar(true)
+    }
+  }
 }
 </script>
 <template>
