@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-10 17:50:24
+ * @LastEditTime: 2023-03-15 11:08:16
+ * @LastEditors: Amber
+-->
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useAppStore } from '@/stores/app'
@@ -5,7 +12,7 @@ import AppMain from "./components/AppMain.vue"
 import sidebar from './components/Sidebar/index.vue'
 import Navbar from "./components/Navbar.vue"
 import TagsView from "./components/TagsView/index.vue"
-import { DeviceType } from '@/stores/app/state-type'
+import { DeviceType } from '@/stores/app/type'
 
 const app = useAppStore()
 let classObj = computed(() => {
@@ -65,7 +72,7 @@ const handleClickOutside = () => {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 9;
+    z-index: 12;
     width: calc(100% - #{$sideBarWidth});
     transition: width 0.28s;
   }

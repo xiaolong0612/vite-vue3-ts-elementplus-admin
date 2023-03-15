@@ -6,11 +6,11 @@
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
-import { useAdminStore } from "@/stores/admin";
+import { useUserStore } from "@/stores/user";
 import adminDashboard from './admin/index.vue'
 import editorDashboard from './editor/index.vue'
 
-const admin = useAdminStore()
+const admin = useUserStore()
 const currentRole = admin.roles.includes('admin') ? adminDashboard : editorDashboard
 </script>
 

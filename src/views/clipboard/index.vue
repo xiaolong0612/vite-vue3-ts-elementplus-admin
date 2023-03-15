@@ -1,0 +1,56 @@
+<!--
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-15 01:24:49
+ * @LastEditTime: 2023-03-15 03:20:34
+ * @LastEditors: Amber
+-->
+<template>
+  <div class="app-container">
+    <el-tabs v-model="activeName">
+      <el-tab-pane
+        label="use clipboard directly"
+        name="directly"
+      >
+        <el-input
+          v-model="inputData"
+          placeholder="Please input"
+          style="width:400px; max-width:100%;"
+        />
+        <el-button
+          type="primary"
+          icon="DocumentCopy"
+          @click="handleClipboard(inputData, $event)"
+        >
+          copy
+        </el-button>
+      </el-tab-pane>
+      <el-tab-pane
+        label="use clipboard by v-directive"
+        name="v-directive"
+      >
+        <el-input
+          v-model="inputData"
+          placeholder="Please input"
+          style="width:400px; max-width:100%;"
+        />
+        <el-button
+          v-clipboard:copy="inputData"
+          v-clipboard:success="clipboardSuccess"
+          type="primary"
+          icon="DocumentCopy"
+        >
+          copy
+        </el-button>
+      </el-tab-pane>
+    </el-tabs>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { handleClipboard, clipboardSuccess } from '@/utils/clipboard' // use clipboard directly
+import { ref } from 'vue';
+
+const activeName = ref('directly')
+const inputData = ref('https://github.com/xiaolong0612/vite-vue3-ts-elementplus-admin.git')
+</script>

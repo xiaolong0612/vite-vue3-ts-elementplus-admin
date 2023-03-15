@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CountTo from "@/components/CountTo/index.vue"
+import { CountTo } from 'vue3-count-to'
 </script>
 
 <template>

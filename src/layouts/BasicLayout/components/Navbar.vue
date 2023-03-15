@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { useAppStore } from '@/stores/app'
-import { useAdminStore } from '@/stores/admin'
+import { useUserStore } from "@/stores/user"
 import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Search from '@/components/HeaderSearch/index.vue'
+import ErrorLog from '@/components/ErrorLog/index.vue'
 
 const router = useRouter()
 const toggleSideBar = () => {
   app.sidebar.opened = !app.sidebar.opened
 }
 const app = useAppStore()
-const admin = useAdminStore()
+const user = useUserStore()
 
 const logout = () => {
-  admin.logout().then(() => {
+  user.logout().then(() => {
     router.replace('/login')
   })
 }
@@ -23,12 +24,12 @@ const logout = () => {
   <div class="navbar">
     <hamburger id="hamburger-container" :is-active="app.sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
-
     <div class="right-menu">
       <search id="header-search" class="right-menu-item" />
+      <ErrorLog class="right-menu-item" />
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper flex items-end">
-          <img :src="admin.avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <img :src="user.avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
           <el-icon><CaretBottom /></el-icon>
         </div>
         <template #dropdown>
