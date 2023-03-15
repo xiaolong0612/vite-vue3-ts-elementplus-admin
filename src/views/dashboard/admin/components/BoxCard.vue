@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useAdminStore } from "@/stores/admin"
+import { useUserStore } from "@/stores/user"
 import PanThumb from '@/components/PanThumb/index.vue'
 import Mallki from '@/components/TextHoverEffect/Mallki.vue'
 
-const admin = useAdminStore()
+const admin = useUserStore()
 </script>
 <template>
   <el-card class="box-card-component">

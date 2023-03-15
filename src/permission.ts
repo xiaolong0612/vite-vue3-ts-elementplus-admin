@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-12 13:09:32
+ * @LastEditTime: 2023-03-15 10:55:04
  * @LastEditors: Amber
  */
 import router from './router'
@@ -25,7 +25,7 @@ router.beforeEach(async(to: RouteLocationNormalized, _: RouteLocationNormalized,
   document.title = getPageTitle(to.meta.title as string)
 
   // determine whether the user has logged in
-  const hasToken = getStoreItem(localStorage.ADMIN, 'token')
+  const hasToken = getStoreItem(localStorage.USER, 'token')
   if (hasToken) {
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
@@ -38,7 +38,7 @@ router.beforeEach(async(to: RouteLocationNormalized, _: RouteLocationNormalized,
       } else {
         try {
           // 动态路由
-          const accessRoutes = await permission.generateRoutes(getStoreItem(localStorage.ADMIN, 'roles')) as RouteRecordRaw[]
+          const accessRoutes = await permission.generateRoutes(getStoreItem(localStorage.USER, 'roles') as string[]) as RouteRecordRaw[]
           permission.pushRoutes(accessRoutes)
           next({ ...to, replace: true })
         } catch (error) {

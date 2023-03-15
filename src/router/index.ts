@@ -2,6 +2,11 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 // 基础页面布局，包含了头部导航，侧边栏等。
 import basicLayout from "@/layouts/BasicLayout/index.vue"
 
+import componentsRouter from "./modules/components"
+import errorRouter from "./modules/error"
+import zipRouter from "./modules/zip"
+import clipboardRouter from "./modules/clipboard"
+
 export const constantRoutes = [
   {
     path: '/redirect',
@@ -76,24 +81,10 @@ export const asyncRoutes = [
       }
     ]
   },
-  {
-    path: '/error',
-    component: basicLayout,
-    redirect: '/error/404',
-    name: 'ErrorPages',
-    meta: {
-      title: 'Error Pages',
-      icon: 'CloseBold'
-    },
-    children: [
-      {
-        path: '404',
-        component: () => import('@/views/error-page/404.vue'),
-        name: 'Page404',
-        meta: { title: '404', noCache: true }
-      }
-    ]
-  },
+  componentsRouter,
+  errorRouter,
+  zipRouter,
+  clipboardRouter,
   { path: '/:catchAll(.*)', redirect: '/404' }
 ] as RouteRecordRaw[]
 

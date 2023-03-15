@@ -7,10 +7,10 @@
 -->
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useAdminStore } from "@/stores/admin";
+import { useUserStore } from "@/stores/user";
 import { checkPermission } from '@/utils/permission' // Use permission directly
 
-const admin = useAdminStore()
+const admin = useUserStore()
 const key = ref<number>(1)
 
 const handleRolesChange = (val: string) => {

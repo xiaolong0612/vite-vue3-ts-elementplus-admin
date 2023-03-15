@@ -9,20 +9,14 @@
 
       <el-form-item prop="username">
         <el-input ref="username" v-model="loginForm.username" placeholder="Username" name="username" type="text"
-          tabindex="1" autocomplete="on">
-          <template #prefix>
-            <el-button :icon="User" />
-          </template>
-        </el-input>
+          tabindex="1" autocomplete="on" prefix-icon="User" />
       </el-form-item>
 
       <el-form-item prop="password">
         <el-input :key="passwordType" ref="password" v-model="loginForm.password" placeholder="Password" name="password"
           :type="passwordType" tabindex="1" autocomplete="on" @keyup="checkCapslock" @blur="capsTooltip = false"
-          @keyup.enter="handleLogin">
-          <template #prefix>
-            <el-button :icon="Lock" />
-          </template>
+          @keyup.enter="handleLogin" prefix-icon="Lock"
+        >
           <template #append>
             <el-icon @click="showPwd" v-if="!passwordType" color="#889aa4" size="16">
               <View />
@@ -54,12 +48,11 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
-import { User, Lock } from '@element-plus/icons-vue'
 import { validUsername } from '@/utils/validate'
-import { useAdminStore } from '@/stores/admin'
+import { useUserStore } from '@/stores/user'
 import { useRouter } from "vue-router"
 
-const admin = useAdminStore()
+const user = useUserStore()
 const router = useRouter()
 
 const loginForm = reactive({
@@ -96,7 +89,7 @@ const handleLogin = async () => {
   await loginFormRef.value.validate((valid, fields) => {
     if (valid) {
       loading.value = true
-      admin.login(loginForm).then(rs => {
+      user.login(loginForm).then(rs => {
         loading.value = false
         ElMessage.success(rs.message)
         router.push('/')

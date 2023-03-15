@@ -1,6 +1,4 @@
-/**
- * Parse the time to string
- */
+// Parse the time to string
 export function parseTime(time: string | number | Date, cFormat?: string | null) {
   if (arguments.length === 0 || !time) {
     return null
@@ -87,7 +85,7 @@ export function formatTime(time: any, option: string) {
  * @param {Object} source
  * @returns {Object}
  */
-export function deepClone(source:any) {
+export function deepClone(source:any):Object {
   if (!source && typeof source !== 'object') {
     throw new Error('error arguments deepClone')
   }
@@ -102,37 +100,34 @@ export function deepClone(source:any) {
   return targetObj
 }
 
-export function getStoreItem (module: string, key: string) {
+export function getStoreItem (module: string, key: string): string | Object {
   return module ? JSON.parse(module)[key] : ''
 }
 
-/**
- * Check if an element has a class
- * @param {HTMLElement} elm
- * @param {string} cls
- * @returns {boolean}
- */
-export function hasClass(ele: HTMLElement, cls: string) {
+// Check if an element has a class
+export function hasClass(ele: HTMLElement, cls: string):boolean {
   return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
 }
 
-/**
- * Add class to element
- * @param {HTMLElement} elm
- * @param {string} cls
- */
+// Add class to element
 export function addClass(ele: HTMLElement, cls: string) {
   if (!hasClass(ele, cls)) ele.className += ' ' + cls
 }
 
-/**
- * Remove class from element
- * @param {HTMLElement} elm
- * @param {string} cls
- */
+// Remove class from element
 export function removeClass(ele: HTMLElement, cls: string) {
   if (hasClass(ele, cls)) {
     const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
     ele.className = ele.className.replace(reg, ' ')
   }
 }
+
+// Format and filter json data using filterKeys array
+export const formatJson = (filterKeys: any, jsonData: any) =>
+  jsonData.map((data: any) => filterKeys.map((key: string) => {
+    if (key === 'timestamp') {
+      return parseTime(data[key])
+    } else {
+      return data[key]
+    }
+  }))

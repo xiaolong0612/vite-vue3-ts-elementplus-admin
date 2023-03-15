@@ -1,9 +1,9 @@
 /*
  * @Description: 加载插件文件
  * @Author: Amber
- * @Date: 2020-12-19 11:53:00
+ * @Date: 2023-03-12 12:50:25
  * @LastEditors: Amber
- * @LastEditTime: 2023-03-12 12:50:25
+ * @LastEditTime: 2023-03-15 01:48:14
  */
 import type { createApp } from 'vue'
 

@@ -2,17 +2,17 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-12 23:11:35
+ * @LastEditTime: 2023-03-15 02:43:17
  * @LastEditors: Amber
  */
 import Mock from 'mockjs'
 import type { MockParams } from '@/types/mock'
 import adminApi from './admin'
 import rolesApi from './roles'
+import articlesApi from './articles'
 
 // 需要遍历的请求
-const mocks = [...adminApi, ...rolesApi]
-console.log(mocks)
+const mocks = [...adminApi, ...rolesApi, ...articlesApi]
 
 // 设置200-2000毫秒延时请求数据
 Mock.setup({

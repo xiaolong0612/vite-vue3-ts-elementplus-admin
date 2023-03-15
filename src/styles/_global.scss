@@ -1,4 +1,15 @@
 // 公共类
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  a {
+    color: #337ab7;
+    cursor: pointer;
+  }
+}
 .no-padding {
   padding: 0px !important;
 }

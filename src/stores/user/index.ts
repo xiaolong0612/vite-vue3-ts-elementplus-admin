@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-12 13:13:12
+ * @LastEditTime: 2023-03-15 10:48:04
  * @LastEditors: Amber
  */
 import pinia from '@/stores'
@@ -12,16 +12,14 @@ import { adminLogin, adminLogout } from "@/api/admin"
 import type { RootResponseType } from "@/types/axios"
 import type { LoginReq } from "@/api/admin/types"
 import { usePermissionStore } from "@/stores/permission"
-import { getStoreItem } from '@/utils'
 import type { RouteRecordRaw } from 'vue-router'
-import router from '@/router'
 import { useTagsViewStore } from "@/stores/tagsView"
 
 // fix Uncaught Error: [🍍]: getActivePinia was called with no active Pinia. Did you forget to install pinia?
 const permission = usePermissionStore(pinia)
 const tagsView = useTagsViewStore(pinia)
 
-export const useAdminStore = defineStore(Names.ADMIN, {
+export const useUserStore = defineStore(Names.USER, {
   state:() => ({
     name: '',
     token: '',
@@ -68,7 +66,7 @@ export const useAdminStore = defineStore(Names.ADMIN, {
       })
     },
     resetToken() {
-      useAdminStore().$reset()
+      useUserStore().$reset()
     },
     async changeRoles(role: string) {
       const token = role + '-token'

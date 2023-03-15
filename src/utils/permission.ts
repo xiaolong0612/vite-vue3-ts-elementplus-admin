@@ -5,11 +5,11 @@
  * @LastEditors: Amber
  * @LastEditTime: 2023-03-11 19:30:34
  */
-import { useAdminStore } from '@/stores/admin'
+import { useUserStore } from '@/stores/user'
 
 export const checkPermission = (value: string[]): boolean => {
   if (value && value instanceof Array && value.length > 0) {
-    const roles = useAdminStore().roles
+    const roles = useUserStore().roles
     const permissionRoles = value
     const hasPermission = roles.some(role => {
       return permissionRoles.includes(role)
