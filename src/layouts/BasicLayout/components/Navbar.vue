@@ -8,6 +8,7 @@ import Search from '@/components/HeaderSearch/index.vue'
 import ErrorLog from '@/components/ErrorLog/index.vue'
 import Theme from '@/components/Theme/index.vue'
 import Lang from './i18n/index.vue'
+import { ElMessage } from "element-plus";
 const router = useRouter()
 const toggleSideBar = () => {
   app.sidebar.opened = !app.sidebar.opened
@@ -16,7 +17,8 @@ const app = useAppStore()
 const user = useUserStore()
 
 const logout = () => {
-  user.logout().then(() => {
+  user.logout().then(rs => {
+    ElMessage.success(rs.message)
     router.replace('/login')
   })
 }

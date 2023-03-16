@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-16 23:24:21
- * @LastEditTime: 2023-03-16 23:43:47
+ * @LastEditTime: 2023-03-17 00:06:44
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
@@ -39,6 +39,11 @@ const theme = ref<boolean>(app.theme === 1)
     <div class="drawer-item">
       <span>Sidebar Logo</span>
       <el-switch v-model="app.sidebarLogo" class="drawer-switch" />
+    </div>
+
+    <div class="drawer-item">
+      <span>Github</span>
+      <el-switch v-model="app.github" class="drawer-switch" />
     </div>
 
   </div>
