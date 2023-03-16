@@ -6,6 +6,7 @@ import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Search from '@/components/HeaderSearch/index.vue'
 import ErrorLog from '@/components/ErrorLog/index.vue'
+import Theme from '@/components/Theme/index.vue'
 
 const router = useRouter()
 const toggleSideBar = () => {
@@ -27,6 +28,7 @@ const logout = () => {
     <div class="right-menu">
       <search id="header-search" class="right-menu-item" />
       <ErrorLog class="right-menu-item" />
+      <Theme class="right-menu-item" />
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper flex items-end">
           <img :src="user.avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
@@ -59,7 +61,6 @@ const logout = () => {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {

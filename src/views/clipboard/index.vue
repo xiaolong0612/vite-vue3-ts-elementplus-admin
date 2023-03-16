@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-15 01:24:49
- * @LastEditTime: 2023-03-15 03:20:34
+ * @LastEditTime: 2023-03-16 14:01:01
  * @LastEditors: Amber
 -->
 <template>
@@ -12,36 +12,48 @@
         label="use clipboard directly"
         name="directly"
       >
-        <el-input
-          v-model="inputData"
-          placeholder="Please input"
-          style="width:400px; max-width:100%;"
-        />
-        <el-button
-          type="primary"
-          icon="DocumentCopy"
-          @click="handleClipboard(inputData, $event)"
-        >
-          copy
-        </el-button>
+        <el-form :inline="true" >
+          <el-form-item>
+            <el-input
+              v-model="inputData"
+              placeholder="Please input"
+              style="width:400px; max-width:100%;"
+            />
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              type="primary"
+              icon="DocumentCopy"
+              @click="handleClipboard(inputData, $event)"
+            >
+              copy
+            </el-button>
+          </el-form-item>
+        </el-form>
       </el-tab-pane>
       <el-tab-pane
         label="use clipboard by v-directive"
         name="v-directive"
       >
-        <el-input
-          v-model="inputData"
-          placeholder="Please input"
-          style="width:400px; max-width:100%;"
-        />
-        <el-button
-          v-clipboard:copy="inputData"
-          v-clipboard:success="clipboardSuccess"
-          type="primary"
-          icon="DocumentCopy"
-        >
-          copy
-        </el-button>
+      <el-form :inline="true" >
+          <el-form-item>
+            <el-input
+              v-model="inputData"
+              placeholder="Please input"
+              style="width:400px; max-width:100%;"
+            />
+          </el-form-item>
+          <el-form-item>
+            <el-button
+              v-clipboard:copy="inputData"
+              v-clipboard:success="clipboardSuccess"
+              type="primary"
+              icon="DocumentCopy"
+            >
+              copy
+            </el-button>
+          </el-form-item>
+        </el-form>
       </el-tab-pane>
     </el-tabs>
   </div>

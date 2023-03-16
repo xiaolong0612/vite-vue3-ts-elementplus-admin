@@ -104,7 +104,6 @@ export const asyncRoutes = [
   {
     path: '/pdf-download-example',
     component: () => import('@/views/pdf/download.vue'),
-    meta: { hidden: true }
   },
   { path: '/:catchAll(.*)', redirect: '/404' }
 ] as RouteRecordRaw[]

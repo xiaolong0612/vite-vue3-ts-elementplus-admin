@@ -1,0 +1,86 @@
+@import './_variables.module.scss';
+
+html.dark {
+  #app {
+    aside {
+      background-color: $darkBg;
+      color: $darkGray;
+    }
+    .sidebar-container {
+      background-color: $darkBg;
+      // menu hover
+      .sub-menu-title-noDropdown,
+      .el-sub-menu__title {
+        &:hover {
+          background-color: $darkMenuHover!important;
+        }
+      }
+
+      .is-active>.el-sub-menu__title {
+        color: $subMenuActiveText!important;
+      }
+
+      & .nest-menu .el-sub-menu>.el-sub-menu__title,
+      & .el-sub-menu .el-menu-item {
+        background-color: $darkSubMenuBg!important;
+
+        &:hover {
+          background-color: $darkSubMenuHover!important;
+        }
+      }
+    }
+    .el-menu--vertical {
+      .nest-menu .el-sub-menu>.el-sub-menu__title,
+      .el-menu-item {
+        &:hover {
+          background-color: $darkSubMenuHover !important;
+        }
+      }
+    }
+  }
+  .navbar {
+    background-color: $darkBg;
+    border-bottom: 1px solid $darkBorder;
+    .hamburger-container{
+      svg {
+        path{
+          fill: $darkGray;
+        }
+      }
+    }
+    .right-menu {
+      color: $darkGray;
+    }
+  }
+  .tags-view-container{
+    background-color: $darkBg;
+    border:  0 solid;
+    box-shadow: $darkShadow;
+    .tags-view-wrapper {
+      .tags-view-item {
+        background-color: $darkTagBg;
+        color: $darkTagText;
+        border: 1px solid $darkTagBorder;
+        border-radius: 4px;
+        &.active {
+          background-color: $darkTagActiveBg;
+          color: $darkTagActiveText;
+          border: 1px solid $darkTagActiveBorder;
+        }
+      }
+    }
+  }
+  .dashboard-container {
+    .panel-group {
+      .card-panel {
+        background-color: $darkBg;
+        .card-panel-text {
+          color: $darkGray;
+        }
+        .card-panel-num {
+          color: $darkWhite;
+        }
+      }
+    }
+  }
+}

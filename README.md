@@ -63,7 +63,7 @@ Online demo address：
 
 - Components
   - JSON Editor
-  - 配置化表单
+  - Configured form
   - CountTo
 
 - Excel
@@ -78,6 +78,8 @@ Online demo address：
   - Error Log
   - Clipboard
   - Weather View
+  - Export PDF
+  - Theme (dark or light)
 
 - More functions are still under development, please look forward to
 ```

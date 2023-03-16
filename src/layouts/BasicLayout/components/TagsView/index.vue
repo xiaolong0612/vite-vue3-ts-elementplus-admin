@@ -219,6 +219,14 @@ export default defineComponent({
           {{ tag.title }}
           <el-icon v-if="!isAffix(tag)" @click.prevent.stop="closeSelectedTag(tag)"><Close /></el-icon>
         </span>
+        <!-- <el-tag
+          class="tags-view-item"
+          :closable="isActive(tag)"
+          :type="isActive(tag) ? 'success' : 'info'"
+          @close="closeSelectedTag(tag)"
+        >
+          {{ tag.title }}
+        </el-tag> -->
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">

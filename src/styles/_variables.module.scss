@@ -26,6 +26,25 @@ $sideBarWidth: 210px;
 $shadowLight: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 $shadowDark: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
+// dark
+$darkBg: #1d1e1f;
+$darkHeaderBg: #213d5b;
+$darkTagBg: #202121;
+$darkTagText: #909399;
+$darkTagBorder: #4c4d4f;
+$darkTagActiveBg: #1c2518;
+$darkTagActiveText: #67c23a;
+$darkTagActiveBorder: #25371c;
+$darkGray: #97a8be;
+$darkWhite: #fff;
+$darkShadow: 0 1px 4px #5b5b5b;
+$darkBorder: #4c4d4f;
+
+$darkMenuBg:#304156;
+$darkMenuHover:#000;
+$darkSubMenuBg:#292a2c;
+$darkSubMenuHover:#363637;
+
 :export {
   menuText: $menuText;
   menuActiveText: $menuActiveText;
@@ -35,4 +54,5 @@ $shadowDark: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
   sideBarWidth: $sideBarWidth;
+  darkBg: $darkBg;
 }

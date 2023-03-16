@@ -24,6 +24,7 @@ const activeMenu = computed(() => {
   }
   return path
 })
+console.log(app.theme)
 </script>
 <template>
   <div :class="{'has-logo': showLogo}">
@@ -32,7 +33,7 @@ const activeMenu = computed(() => {
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
+        :background-color="app.theme ? variables.menuBg : variables.darkBg"
         :text-color="variables.menuText"
         :unique-opened="false"
         :active-text-color="variables.menuActiveText"
