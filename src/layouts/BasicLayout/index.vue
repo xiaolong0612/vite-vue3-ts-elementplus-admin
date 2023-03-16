@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-16 18:24:34
+ * @LastEditTime: 2023-03-16 23:28:24
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
@@ -12,6 +12,8 @@ import AppMain from "./components/AppMain.vue"
 import sidebar from './components/Sidebar/index.vue'
 import Navbar from "./components/Navbar.vue"
 import TagsView from "./components/TagsView/index.vue"
+import Settings from "./components/Settings/index.vue"
+import RightPanel from '@/components/RightPanel/index.vue'
 import { DeviceType } from '@/stores/app/type'
 
 const app = useAppStore()
@@ -72,6 +74,9 @@ const _resizeHandler = () => {
         <tags-view v-if="app.tagsView" />
       </div>
       <app-main />
+      <RightPanel v-if="app.showSettings">
+        <Settings />
+      </RightPanel>
     </div>
   </div>
 </template>
