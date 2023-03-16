@@ -1,6 +1,8 @@
 export default {
   title: 'Vue Element Admin',
 
+  lang: <string>'zh-ch',
+
   showSettings: <boolean>true,
 
   /**

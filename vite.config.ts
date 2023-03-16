@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-13 19:27:57
+ * @LastEditTime: 2023-03-16 18:43:05
  * @LastEditors: Amber
  */
 import { fileURLToPath, URL } from 'node:url'
@@ -51,7 +51,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
     }
   }
 })

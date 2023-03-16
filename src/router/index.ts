@@ -100,6 +100,22 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/i18n',
+    component: basicLayout,
+    redirect: '/i18n/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/i18n/index.vue'),
+        name: 'i18n',
+        meta: {
+          title: 'i18n',
+          icon: 'Flag'
+        }
+      }
+    ]
+  },
+  {
     path: '/pdf-download-example',
     component: () => import('@/views/pdf/download.vue'),
   },

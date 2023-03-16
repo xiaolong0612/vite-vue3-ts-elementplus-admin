@@ -83,4 +83,9 @@ html.dark {
       }
     }
   }
+  .custom-block {
+    &.tip {
+      background-color: $darkTipBg;
+    }
+  }
 }
