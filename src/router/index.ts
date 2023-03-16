@@ -30,14 +30,12 @@ export const constantRoutes = [
     path: '/',
     component: basicLayout,
     redirect: '/dashboard',
-    name: 'Dashboard',
-    meta: { title: 'Dashboard', icon: 'Monitor', affix: true },
     children: [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard' }
+        meta: { title: 'Dashboard', icon: 'Monitor', affix: true }
       }
     ]
   }

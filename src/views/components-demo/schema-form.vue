@@ -2,11 +2,11 @@
  * @Description: 配置化表单
  * @Author: Amber
  * @Date: 2023-03-13 22:23:32
- * @LastEditTime: 2023-03-15 14:16:56
+ * @LastEditTime: 2023-03-16 15:34:02
  * @LastEditors: Amber
 -->
 <template>
-  <div class="components-container">
+  <div class="app-container">
     <el-row :gutter="20">
       <el-col :span="8">
         <el-tag class="tag-title">options</el-tag>
@@ -22,19 +22,21 @@
       </el-col>
       <el-col :span="8">
         <el-tag class="tag-title">form</el-tag>
-        <schema-form
-          ref="schemaFormRef"
-          :form="form"
-          :options="options"
-          :rules="rules"
-          label-width="120px"
-          direction="vertical"
-        >
-          <template #search>
-            <el-button type="primary" @click="handleSubmit">搜索</el-button>
-            <el-button @click="handleReset">重置</el-button>
-          </template>
-        </schema-form>
+        <el-card>
+          <schema-form
+            ref="schemaFormRef"
+            :form="form"
+            :options="options"
+            :rules="rules"
+            label-width="120px"
+            direction="vertical"
+          >
+            <template #search>
+              <el-button type="primary" @click="handleSubmit">搜索</el-button>
+              <el-button @click="handleReset">重置</el-button>
+            </template>
+          </schema-form>
+        </el-card>
       </el-col>
     </el-row>
   </div>

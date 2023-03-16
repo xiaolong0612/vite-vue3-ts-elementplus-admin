@@ -2,12 +2,12 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-15 14:16:34
- * @LastEditTime: 2023-03-15 14:30:27
+ * @LastEditTime: 2023-03-16 15:32:58
  * @LastEditors: Amber
 -->
 <template>
-  <div class="components-container">
-    <el-row :gutter="20">
+  <div class="app-container">
+    <el-row>
       <el-col :span="24">
         <el-card :body-style="{padding: '0px'}" class="mb-4">
           <aside>

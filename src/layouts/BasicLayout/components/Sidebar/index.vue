@@ -24,13 +24,13 @@ const activeMenu = computed(() => {
   }
   return path
 })
-console.log(app.theme)
 </script>
 <template>
   <div :class="{'has-logo': showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
+        id="slider"
         :default-active="activeMenu"
         :collapse="isCollapse"
         :background-color="app.theme ? variables.menuBg : variables.darkBg"

@@ -1,21 +1,23 @@
 <template>
-  <div class="components-container">
-    <aside>
+  <div class="app-container">
+    <aside class="mb-4">
       <a href="https://github.com/PanJiaChen/vue-countTo" target="_blank">countTo-component</a>
     </aside>
-    <count-to
-      ref="example"
-      :start-val="_startVal"
-      :end-val="_endVal"
-      :duration="_duration"
-      :decimals="_decimals"
-      :separator="_separator"
-      :prefix="_prefix"
-      :suffix="_suffix"
-      :autoplay="false"
-      class="example"
-    />
-    <div style="margin-left: 25%;margin-top: 40px;">
+    <el-card>
+      <count-to
+        ref="example"
+        :start-val="_startVal"
+        :end-val="_endVal"
+        :duration="_duration"
+        :decimals="_decimals"
+        :separator="_separator"
+        :prefix="_prefix"
+        :suffix="_suffix"
+        :autoplay="false"
+        class="example"
+      />
+    </el-card>
+    <el-card :body-style="{padding: 0, paddingTop: '30px'}" class="mt-4 text-center">
       <label class="label" for="startValInput">startVal:
         <input v-model.number="setStartVal" type="number" name="startValInput">
       </label>
@@ -44,10 +46,12 @@
       <label class="label" for="suffixInput">suffix:
         <input v-model="setSuffix" name="suffixInput">
       </label>
-    </div>
-    <aside>&lt;count-to :start-val=&#x27;{{ _startVal }}&#x27; :end-val=&#x27;{{ _endVal }}&#x27; :duration=&#x27;{{ _duration }}&#x27;
-      :decimals=&#x27;{{ _decimals }}&#x27; :separator=&#x27;{{ _separator }}&#x27; :prefix=&#x27;{{ _prefix }}&#x27; :suffix=&#x27;{{ _suffix }}&#x27;
-      :autoplay=false&gt;</aside>
+      <aside class="mt-4 text-center">
+        &lt;count-to :start-val=&#x27;{{ _startVal }}&#x27; :end-val=&#x27;{{ _endVal }}&#x27; :duration=&#x27;{{ _duration }}&#x27;
+        :decimals=&#x27;{{ _decimals }}&#x27; :separator=&#x27;{{ _separator }}&#x27; :prefix=&#x27;{{ _prefix }}&#x27; :suffix=&#x27;{{ _suffix }}&#x27;
+        :autoplay=false&gt;
+      </aside>
+    </el-card>
   </div>
 </template>
 

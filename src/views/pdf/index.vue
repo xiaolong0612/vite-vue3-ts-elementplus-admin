@@ -1,9 +1,10 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <!--
  * @Description:
  * @Autor: Amber
  * @Date: 2023-03-15 16:26:47
  * @LastEditors: Amber
- * @LastEditTime: 2023-03-15 16:28:56
+ * @LastEditTime: 2023-03-16 17:05:59
 -->
 <template>
   <div class="app-container">

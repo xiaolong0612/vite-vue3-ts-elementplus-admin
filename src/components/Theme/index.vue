@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-15 16:54:34
- * @LastEditTime: 2023-03-15 18:58:41
+ * @LastEditTime: 2023-03-16 15:15:34
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
@@ -10,7 +10,6 @@ import { ref } from 'vue'
 import { useAppStore} from "@/stores/app"
 
 const app = useAppStore()
-console.log(app.theme)
 const theme = ref<boolean>(app.theme === 1)
 </script>
 <template>

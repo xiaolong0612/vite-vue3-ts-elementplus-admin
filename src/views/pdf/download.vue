@@ -1,9 +1,10 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <!--
  * @Description:
  * @Autor: Amber
  * @Date: 2023-03-15 16:35:49
  * @LastEditors: Amber
- * @LastEditTime: 2023-03-15 16:47:16
+ * @LastEditTime: 2023-03-16 17:06:09
 -->
 <template>
   <div
