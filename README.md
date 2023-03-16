@@ -80,6 +80,7 @@ Online demo address：
   - Weather View
   - Export PDF
   - Theme (dark or light)
+  - i18n
 
 - More functions are still under development, please look forward to
 ```
