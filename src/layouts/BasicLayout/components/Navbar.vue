@@ -7,7 +7,7 @@ import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Search from '@/components/HeaderSearch/index.vue'
 import ErrorLog from '@/components/ErrorLog/index.vue'
 import Theme from '@/components/Theme/index.vue'
-
+import Lang from './i18n/index.vue'
 const router = useRouter()
 const toggleSideBar = () => {
   app.sidebar.opened = !app.sidebar.opened
@@ -29,6 +29,7 @@ const logout = () => {
       <search id="header-search" class="right-menu-item" />
       <ErrorLog class="right-menu-item" />
       <Theme class="right-menu-item" />
+      <Lang class="right-menu-item" />
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper flex items-end">
           <img :src="user.avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
@@ -36,13 +37,10 @@ const logout = () => {
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <router-link to="/profile/index">
-              <el-dropdown-item>Profile</el-dropdown-item>
-            </router-link>
             <router-link to="/">
               <el-dropdown-item>Dashboard</el-dropdown-item>
             </router-link>
-            <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
+            <a target="_blank" href="https://github.com/xiaolong0612/vite-vue3-ts-elementplus-admin">
               <el-dropdown-item>Github</el-dropdown-item>
             </a>
             <el-dropdown-item divided @click="logout">

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-15 19:45:20
+ * @LastEditTime: 2023-03-16 20:42:29
  * @LastEditors: Amber
  */
 import { defineStore } from 'pinia'
@@ -11,6 +11,8 @@ import { getStoreItem } from '@/utils'
 import defaultSettings from '@/setting'
 import { DeviceType, ThemeType } from "./type"
 import {useDark, useToggle} from '@vueuse/core'
+import i18n from '@/locales'
+import settings from "@/setting"
 
 const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
 const isDark = useDark()
@@ -28,6 +30,7 @@ export const useAppStore = defineStore(Names.APP, {
     fixedHeader: fixedHeader,
     sidebarLogo: sidebarLogo,
     theme: isDark ? ThemeType.Dark : ThemeType.Light,
+    lang: getStoreItem(localStorage.APP, 'lang') || settings.lang
   }),
   // computed
   getters: {
@@ -35,6 +38,10 @@ export const useAppStore = defineStore(Names.APP, {
   },
   // methods
   actions: {
+    changeLang(lang: string = settings.lang) {
+      this.lang = lang
+      i18n.global.locale.value = lang as any
+    },
     toggleSideBar() {
       this.sidebar.opened = !this.sidebar.opened
       this.sidebar.withoutAnimation = false
@@ -52,12 +59,11 @@ export const useAppStore = defineStore(Names.APP, {
     switchThemes() {
       const toggleDark = useToggle(isDark)
       this.theme = toggleDark() ? ThemeType.Dark : ThemeType.Light
-      console.log(this.theme)
     }
   },
   persist: [
     {
-      paths: ['sidebar', 'size', 'showSettings'],
+      paths: ['sidebar', 'size', 'showSettings', 'lang'],
       storage: localStorage
     },
     { 

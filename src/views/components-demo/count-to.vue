@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <aside class="mb-4">
-      <a href="https://github.com/PanJiaChen/vue-countTo" target="_blank">countTo-component</a>
+      <a href="https://www.npmjs.com/package/vue3-count-to" target="_blank">vue3-count-to</a>
     </aside>
     <el-card>
       <count-to
@@ -121,6 +121,7 @@ const  pauseResume = () => {
 .example-btn {
   display: inline-block;
   margin-bottom: 0;
+  margin-right: 10px;
   font-weight: 500;
   text-align: center;
   -ms-touch-action: manipulation;
