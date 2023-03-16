@@ -1,3 +1,5 @@
+English | [简体中文](./README.zh-CN.md)
+
 > vite-vue3-ts-elementplus-admin is a management side template solution based on vite, vue3, ts, and element-plus. The project is written in the style of setup syntax sugar.
 
 ## Introduction
@@ -61,7 +63,7 @@ Online demo address：
 
 - Components
   - JSON Editor
-  - 配置化表单
+  - Configured form
   - CountTo
 
 - Excel
@@ -76,6 +78,8 @@ Online demo address：
   - Error Log
   - Clipboard
   - Weather View
+  - Export PDF
+  - Theme (dark or light)
 
 - More functions are still under development, please look forward to
 ```

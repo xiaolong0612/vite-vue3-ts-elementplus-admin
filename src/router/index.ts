@@ -30,14 +30,12 @@ export const constantRoutes = [
     path: '/',
     component: basicLayout,
     redirect: '/dashboard',
-    name: 'Dashboard',
-    meta: { title: 'Dashboard', icon: 'Monitor', affix: true },
     children: [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index.vue'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard' }
+        meta: { title: 'Dashboard', icon: 'Monitor', affix: true }
       }
     ]
   }
@@ -85,6 +83,26 @@ export const asyncRoutes = [
   errorRouter,
   zipRouter,
   clipboardRouter,
+  {
+    path: '/pdf',
+    component: basicLayout,
+    redirect: '/pdf/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/pdf/index.vue'),
+        name: 'PDF',
+        meta: {
+          title: 'PDF',
+          icon: 'DocumentChecked'
+        }
+      }
+    ]
+  },
+  {
+    path: '/pdf-download-example',
+    component: () => import('@/views/pdf/download.vue'),
+  },
   { path: '/:catchAll(.*)', redirect: '/404' }
 ] as RouteRecordRaw[]
 

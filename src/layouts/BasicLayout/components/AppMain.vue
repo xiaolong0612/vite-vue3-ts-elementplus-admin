@@ -2,26 +2,34 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-12 16:22:15
- * @LastEditTime: 2023-03-12 20:26:33
+ * @LastEditTime: 2023-03-16 15:46:11
  * @LastEditors: Amber
 -->
 <template>
   <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
+    <!-- <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view :key="key" />
       </keep-alive>
-    </transition>
+    </transition> -->
+
+    <router-view v-slot="{ Component }">
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive :include="cachedViews">
+          <component :is="Component" />
+        </keep-alive>
+      </transition>
+    </router-view>
   </section>
 </template>
 <script setup lang="ts">
 import { useTagsViewStore } from '@/stores/tagsView'
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-const route = useRoute()
-const key = computed(() => {
-  return route.path
-})
+// import { useRoute } from 'vue-router'
+// const route = useRoute()
+// const key = computed(() => {
+//   return route.path
+// })
 const cachedViews = computed(() => {
   return useTagsViewStore().cachedViews
 })

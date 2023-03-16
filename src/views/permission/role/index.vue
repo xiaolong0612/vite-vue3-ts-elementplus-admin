@@ -3,72 +3,73 @@
  * @Author: Amber
  * @Date: 2023-01-08 19:32:16
  * @LastEditors: Amber
- * @LastEditTime: 2023-03-13 19:36:11
+ * @LastEditTime: 2023-03-16 13:34:04
 -->
 <template>
   <div class="app-container">
-    <el-button
-      type="primary"
-      @click="handleCreateRole"
-    >
-      New Role
-    </el-button>
-
-    <el-table
-      :data="rolesList"
-      v-loading="rolesLoading"
-      style="width: 100%;margin-top:30px;"
-      border
-    >
-      <el-table-column
-        align="center"
-        label="Role Key"
-        width="220"
+    <el-card>
+      <el-button
+        type="primary"
+        @click="handleCreateRole"
       >
-        <template #default="{row}">
-          {{ row.key }}
-        </template>
-      </el-table-column>
-      <el-table-column
-        align="center"
-        label="Role Name"
-        width="220"
+        New Role
+      </el-button>
+    </el-card>
+    <el-card class="mt-4">
+      <el-table
+        :data="rolesList"
+        v-loading="rolesLoading"
+        border
       >
-        <template #default="{row}">
-          {{ row.name }}
-        </template>
-      </el-table-column>
-      <el-table-column
-        align="header-center"
-        label="Description"
-      >
-        <template #default="{row}">
-          {{ row.description }}
-        </template>
-      </el-table-column>
-      <el-table-column
-        align="center"
-        label="Operations"
-      >
-        <template #default="scope">
-          <el-button
-            type="primary"
-            size="small"
-            @click="handleEdit(scope)"
-          >
-            Edit
-          </el-button>
-          <el-button
-            type="danger"
-            size="small"
-            @click="handleDelete(scope)"
-          >
-            Del
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-
+        <el-table-column
+          align="center"
+          label="Role Key"
+          width="220"
+        >
+          <template #default="{row}">
+            {{ row.key }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          align="center"
+          label="Role Name"
+          width="220"
+        >
+          <template #default="{row}">
+            {{ row.name }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          align="header-center"
+          label="Description"
+        >
+          <template #default="{row}">
+            {{ row.description }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          align="center"
+          label="Operations"
+        >
+          <template #default="scope">
+            <el-button
+              type="primary"
+              size="small"
+              @click="handleEdit(scope)"
+            >
+              Edit
+            </el-button>
+            <el-button
+              type="danger"
+              size="small"
+              @click="handleDelete(scope)"
+            >
+              Del
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-card>
     <el-dialog
       v-model="dialogVisible"
       :title="dialogType === 'edit' ? 'Edit Role' : 'New Role'"

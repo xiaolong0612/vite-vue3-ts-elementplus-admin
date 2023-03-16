@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 let onlyOneChild = ref<RouteRecordRaw>()
 const hasOneShowingChild = (children:RouteRecordRaw[] = [], parent:RouteRecordRaw[]) => {
   const showingChildren = children.filter(item => {
-    if (item?.hidden) {
+    if (!item.meta) {
       return false
     } else {
       // Temp set(will be used if only has one showing child)
@@ -33,7 +33,7 @@ const hasOneShowingChild = (children:RouteRecordRaw[] = [], parent:RouteRecordRa
   }
   // Show parent if there are no child router to display
   if (showingChildren.length === 0) {
-    onlyOneChild.value = { ... parent, path: '', noShowingChildren: true }
+    (onlyOneChild.value as any) = { ... parent, path: '', noShowingChildren: true }
     return true
   }
   return false
@@ -50,7 +50,7 @@ const resolvePath = (routePath: string) => {
 </script>
 <template>
   <!-- <div v-if="!item.hidden"> -->
-  <template v-if="hasOneShowingChild(item?.children, item) && (!onlyOneChild?.children||onlyOneChild.noShowingChildren)&&!item?.alwaysShow">
+  <template v-if="hasOneShowingChild(item?.children, item as unknown as RouteRecordRaw[]) && (!onlyOneChild?.children||(onlyOneChild as any).noShowingChildren)&&!(item as any).alwaysShow">
     <app-link v-if="onlyOneChild?.meta" :to="resolvePath(onlyOneChild.path)">
       <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!props.isNest}">
         <!-- <item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" /> -->
@@ -59,7 +59,7 @@ const resolvePath = (routePath: string) => {
       </el-menu-item>
     </app-link>
   </template>
-  <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+  <el-sub-menu v-else teleported :index="resolvePath(item.path)">
     <template #title v-if="item.meta">
       <!-- <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" /> -->
       <el-icon v-if="item.meta && item.meta.icon"><component :is="item.meta && item.meta.icon" /></el-icon>
@@ -69,9 +69,7 @@ const resolvePath = (routePath: string) => {
         v-for="child in item.children"
         :key="child.path"
         :item="child"
-        :is-nest="true"
         :base-path="resolvePath(child.path)"
-        class="nest-menu"
       />
   </el-sub-menu>
   <!-- </div> -->

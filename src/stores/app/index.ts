@@ -2,15 +2,19 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-15 12:13:14
+ * @LastEditTime: 2023-03-15 19:45:20
  * @LastEditors: Amber
  */
 import { defineStore } from 'pinia'
 import Names from '../name'
 import { getStoreItem } from '@/utils'
 import defaultSettings from '@/setting'
-import { DeviceType } from "./type"
+import { DeviceType, ThemeType } from "./type"
+import {useDark, useToggle} from '@vueuse/core'
+
 const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
+const isDark = useDark()
+
 export const useAppStore = defineStore(Names.APP, {
   state:() => ({
     sidebar: {
@@ -22,7 +26,8 @@ export const useAppStore = defineStore(Names.APP, {
     showSettings: showSettings,
     tagsView: tagsView,
     fixedHeader: fixedHeader,
-    sidebarLogo: sidebarLogo
+    sidebarLogo: sidebarLogo,
+    theme: isDark ? ThemeType.Dark : ThemeType.Light,
   }),
   // computed
   getters: {
@@ -43,12 +48,21 @@ export const useAppStore = defineStore(Names.APP, {
     },
     setSize(size: string) {
       this.size = size
+    },
+    switchThemes() {
+      const toggleDark = useToggle(isDark)
+      this.theme = toggleDark() ? ThemeType.Dark : ThemeType.Light
+      console.log(this.theme)
     }
   },
   persist: [
     {
       paths: ['sidebar', 'size', 'showSettings'],
       storage: localStorage
+    },
+    { 
+      paths: ['theme'],
+      storage: sessionStorage
     }
   ]
 })

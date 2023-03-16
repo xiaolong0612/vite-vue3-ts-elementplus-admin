@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-12 16:22:15
+ * @LastEditTime: 2023-03-15 20:05:51
+ * @LastEditors: Amber
+-->
 <template>
   <div :class="{'hidden':hidden}" class="pagination-container">
     <el-pagination
@@ -72,7 +79,6 @@ const handleCurrentChange = (val:number) => {
 
 <style scoped>
 .pagination-container {
-  background: #fff;
   padding: 32px 16px;
 }
 .pagination-container.hidden {

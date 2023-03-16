@@ -1,201 +1,192 @@
-<script lang="ts">
+<script setup lang="ts">
 import path from 'path-browserify'
 import { useTagsViewStore } from '@/stores/tagsView'
 import { usePermissionStore } from '@/stores/permission'
 import type { TagView } from '@/stores/tagsView/types'
-import { computed, defineComponent, getCurrentInstance, nextTick, onBeforeMount, reactive, ref, toRefs, watch } from 'vue'
+import { computed, getCurrentInstance, nextTick, onMounted, ref, watch } from 'vue'
 import { type RouteRecordRaw, useRoute, useRouter } from 'vue-router'
 import ScrollPane from './ScrollPane.vue'
-export default defineComponent({
-  components: {
-    ScrollPane
-  },
-  setup() {
-    const tagsView = useTagsViewStore()
-    const permission = usePermissionStore()
-    const router = useRouter()
-    const instance = getCurrentInstance()
-    const currentRoute = useRoute()
-    const scrollPaneRef = ref(null)
-    const { proxy } = instance as any
 
-    const toLastView = (visitedViews: TagView[], view: TagView) => {
-      const latestView = visitedViews.slice(-1)[0]
-      if (latestView !== undefined && latestView.fullPath !== undefined) {
-        router.push(latestView.fullPath).catch(err => {
-          console.warn(err)
-        })
-      } else {
-      // Default redirect to the home page if there is no tags-view, adjust it if you want
-        if (view.name === 'Dashboard') {
-        // to reload home page
-          router.push({ path: '/redirect' + view.fullPath }).catch(err => {
-            console.warn(err)
-          })
-        } else {
-          router.push('/').catch(err => {
-            console.warn(err)
-          })
-        }
-      }
-    }
+const tagsView = useTagsViewStore()
+const permission = usePermissionStore()
+const router = useRouter()
+const currentRoute = useRoute()
+const instance = getCurrentInstance()
+const { proxy } = instance as any
+const scrollPaneRef = ref(null)
 
-    const state = reactive({
-      visible: false,
-      top: 0,
-      left: 0,
-      selectedTag: {} as TagView,
-      affixTags: [] as TagView[],
-      isActive: (route: TagView) => {
-        return route.path === currentRoute.path
-      },
-      isAffix: (tag: TagView) => {
-        return tag.meta && tag.meta.affix
-      },
-      refreshSelectedTag: (view: TagView) => {
-        tagsView.delCachedView(view)
-        const { fullPath } = view
-        nextTick(() => {
-          router.replace({ path: '/redirect' + fullPath }).catch(err => {
-            console.warn(err)
-          })
-        })
-      },
-      closeSelectedTag: (view: TagView) => {
-        tagsView.delView(view)
-        if (state.isActive(view)) {
-          toLastView(tagsView.visitedViews, view)
-        }
-      },
-      closeOthersTags: () => {
-        if (state.selectedTag.fullPath !== currentRoute.path && state.selectedTag.fullPath !== undefined) {
-          router.push(state.selectedTag.fullPath).catch(err => {
-            console.log(err)
-          })
-        }
-        tagsView.delOthersViews(state.selectedTag as TagView)
-      },
-      closeAllTags: (view: TagView) => {
-        tagsView.delAllViews()
-        if (state.affixTags.some(tag => tag.path === currentRoute.path)) {
-          return
-        }
-        toLastView(tagsView.visitedViews, view)
-      },
-      openMenu: (tag: TagView, e: MouseEvent) => {
-        const menuMinWidth = 105
-        const offsetLeft = proxy.$el.getBoundingClientRect().left // container margin left
-        const offsetWidth = proxy.$el.offsetWidth // container width
-        const maxLeft = offsetWidth - menuMinWidth // left boundary
-        const templeft = e.clientX - offsetLeft + 15 // 15: margin right
-        if (templeft > maxLeft) {
-          state.left = maxLeft
-        } else {
-          state.left = templeft
-        }
-        state.top = e.clientY
-        state.visible = true
-        state.selectedTag = tag
-      },
-      closeMenu: () => {
-        state.visible = false
-      },
-      handleScroll: () => {
-        state.closeMenu()
-      }
-    })
+const visible = ref<boolean>(false)
+const top = ref<number>(0)
+const left = ref<number>(0)
+const selectedTag = ref<TagView>({})
+const affixTags = ref<TagView[]>()
 
-    const visitedViews = computed(() => {
-      return tagsView.visitedViews
-    })
-    const routes = computed(() => permission.routes)
+const visitedViews = computed(() => {
+  return tagsView.visitedViews
+})
+const routes = computed(() => {
+  return permission.routes
+})
 
-    const filterAffixTags = (routes: RouteRecordRaw[], basePath = '/') => {
-      let tags: TagView[] = []
+const isActive = (route: TagView) => {
+  return route.path === currentRoute.path
+}
 
-      routes.forEach(route => {
-        if (route.meta && route.meta.affix) {
-          const tagPath = path.resolve(basePath, route.path)
-          tags.push({
-            fullPath: tagPath,
-            path: tagPath,
-            name: route.name,
-            meta: { ...route.meta }
-          })
-        }
+const isAffix = (tag: TagView) => {
+  return tag.meta && tag.meta.affix
+}
 
-        if (route.children) {
-          const childTags = filterAffixTags(route.children, route.path)
-          if (childTags.length >= 1) {
-            tags = tags.concat(childTags)
-          }
-        }
-      })
-      return tags
-    }
+const filterAffixTags = (routes: RouteRecordRaw[], basePath = '/') => {
+  let tags: TagView[] = []
 
-    const initTags = () => {
-      state.affixTags = filterAffixTags(routes.value)
-      for (const tag of state.affixTags) {
-        // Must have tag name
-        if (tag.name) {
-          tagsView.addVisitedView(tag as TagView)
-        }
-      }
-    }
-
-    const addTags = () => {
-      if (currentRoute.name) {
-        tagsView.addView(currentRoute)
-      }
-      return false
-    }
-
-    const moveToCurrentTag = () => {
-      const tags = instance?.refs.tag as any[]
-      nextTick(() => {
-        if (tags === null || tags === undefined || !Array.isArray(tags)) { return }
-        for (const tag of tags) {
-          if ((tag.to as TagView).path === currentRoute.path) {
-            (scrollPaneRef.value as any).moveToCurrentTag(tag)
-            // When query is different then update
-            if ((tag.to as TagView).fullPath !== currentRoute.fullPath) {
-              tagsView.updateVisitedView(currentRoute)
-            }
-          }
-        }
+  routes.forEach(route => {
+    if (route.meta && route.meta.affix) {
+      const tagPath = path.resolve(basePath, route.path)
+      tags.push({
+        fullPath: tagPath,
+        path: tagPath,
+        name: route.name,
+        meta: { ...route.meta }
       })
     }
 
-    watch(() => currentRoute.name, () => {
-      if (currentRoute.name !== 'Login') {
-        addTags()
-        moveToCurrentTag()
+    if (route.children) {
+      const childTags = filterAffixTags(route.children, route.path)
+      if (childTags.length >= 1) {
+        tags = tags.concat(childTags)
       }
-    })
+    }
+  })
+  return tags
+}
 
-    watch(() => state.visible, (value) => {
-      if (value) {
-        document.body.addEventListener('click', state.closeMenu)
-      } else {
-        document.body.removeEventListener('click', state.closeMenu)
-      }
-    })
-
-    // life cricle
-    onBeforeMount(() => {
-      initTags()
-      addTags()
-    })
-
-    return {
-      visitedViews,
-      routes,
-      scrollPaneRef,
-      ...toRefs(state)
+const initTags = () => {
+  affixTags.value = filterAffixTags(routes.value)
+  for (const tag of affixTags.value) {
+    if (tag.name) {
+      tagsView.addVisitedView(tag)
     }
   }
+}
+
+const addTags = () => {
+  if (currentRoute.name) {
+    tagsView.addView(currentRoute)
+  }
+  return false
+}
+
+const moveToCurrentTag = () => {
+  const tags = instance?.refs.tag as any[]
+  nextTick(() => {
+    // if (tags === null || tags === undefined || !Array.isArray(tags)) { return }
+    for (const tag of tags) {
+      if (tag.to.path === currentRoute.path) {
+        (scrollPaneRef.value as any).moveToTarget(tag)
+        // when query is different then update
+        if (tag.to.fullPath !== currentRoute.fullPath) {
+          tagsView.updateVisitedView(currentRoute)
+        }
+        break
+      }
+    }
+  })
+}
+
+const refreshSelectedTag = (view: TagView) => {
+  tagsView.delCachedView(view).then(() => {
+    const { fullPath } = view
+    router.replace({ path: '/redirect' + fullPath })
+    // nextTick(() => {
+    //   router.replace({ path: '/redirect' + fullPath })
+    // })
+  })
+}
+
+const closeSelectedTag = (view: TagView) => {
+  tagsView.delView(view).then(() => {
+    if (isActive(view)) {
+        toLastView(tagsView.visitedViews, view)
+      }
+  })
+}
+
+const closeOthersTags = () => {
+  router.push(selectedTag.value as RouteRecordRaw)
+  tagsView.delOthersViews(selectedTag.value).then(() => {
+    moveToCurrentTag()
+  })
+}
+
+const closeAllTags = (view: TagView) => {
+  tagsView.delAllViews().then(() => {
+    if (affixTags.value?.some(tag => tag.path === view.path)) {
+      return
+    }
+    toLastView(tagsView.visitedViews, view)
+  })
+}
+
+const toLastView = (visitedViews: TagView[], view: TagView) => {
+  const latestView = visitedViews.slice(-1)[0]
+  if (latestView !== undefined && latestView.fullPath !== undefined) {
+    router.push(latestView as RouteRecordRaw)
+  } else {
+    // now the default is to redirect to the home page if there is no tags-view,
+    // you can adjust it according to your needs.
+    if (view.name === 'Dashboard') {
+      // to reload home page
+      router.replace({ path: '/redirect' + view.fullPath })
+    } else {
+      router.push('/')
+    }
+  }
+}
+
+const openMenu = (tag: TagView, e: MouseEvent) => {
+  const menuMinWidth = 105
+  const offsetLeft = proxy.$el.getBoundingClientRect().left // container margin left
+  const offsetWidth = proxy.$el.offsetWidth // container width
+  const maxLeft = offsetWidth - menuMinWidth // left boundary
+  const leftTemp = e.clientX - offsetLeft + 15 // 15: margin right
+
+  if (leftTemp > maxLeft) {
+    left.value = maxLeft
+  } else {
+    left.value = leftTemp
+  }
+
+  top.value = e.clientY
+  visible.value = true
+  selectedTag.value = tag
+}
+
+const closeMenu = () => {
+  visible.value = false
+}
+const handleScroll = () => {
+  closeMenu()
+}
+
+watch(() => currentRoute.name, () => {
+  if (currentRoute.name !== 'Login') {
+    addTags()
+    moveToCurrentTag()
+  }
 })
+watch(() => visible.value, (value) => {
+  if (value) {
+    document.body.addEventListener('click', closeMenu)
+  } else {
+    document.body.removeEventListener('click', closeMenu)
+  }
+})
+
+onMounted(() => {
+  initTags()
+  addTags()
+})
+
 </script>
 <template>
   <div id="tags-view-container" class="tags-view-container">

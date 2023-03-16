@@ -30,9 +30,10 @@ const activeMenu = computed(() => {
     <logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
+        id="slider"
         :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
+        :background-color="app.theme ? variables.menuBg : variables.darkBg"
         :text-color="variables.menuText"
         :unique-opened="false"
         :active-text-color="variables.menuActiveText"
