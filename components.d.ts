@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('./src/components/Breadcrumb/index.vue')['default']
+    Charts: typeof import('./src/components/Charts/index.vue')['default']
     CountTo: typeof import('./src/components/CountTo/index.vue')['default']
     ElBadge: typeof import('element-plus/es')['ElBadge']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
@@ -20,6 +21,7 @@ declare module '@vue/runtime-core' {
     ElCol: typeof import('element-plus/es')['ElCol']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -49,6 +51,7 @@ declare module '@vue/runtime-core' {
     ElTag: typeof import('element-plus/es')['ElTag']
     ElTree: typeof import('element-plus/es')['ElTree']
     ErrorLog: typeof import('./src/components/ErrorLog/index.vue')['default']
+    GithubCorner: typeof import('./src/components/GithubCorner/index.vue')['default']
     Hamburger: typeof import('./src/components/Hamburger/index.vue')['default']
     HangBtn: typeof import('./src/components/HangBtn/index.vue')['default']
     HeaderSearch: typeof import('./src/components/HeaderSearch/index.vue')['default']
@@ -57,6 +60,7 @@ declare module '@vue/runtime-core' {
     Mallki: typeof import('./src/components/TextHoverEffect/Mallki.vue')['default']
     Pagination: typeof import('./src/components/Pagination/index.vue')['default']
     PanThumb: typeof import('./src/components/PanThumb/index.vue')['default']
+    RightPanel: typeof import('./src/components/RightPanel/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SchemaForm: typeof import('./src/components/SchemaForm/index.vue')['default']

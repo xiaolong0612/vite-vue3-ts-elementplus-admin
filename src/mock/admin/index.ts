@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-12 23:09:33
+ * @LastEditTime: 2023-03-17 00:02:59
  * @LastEditors: Amber
  */
 import type { responseConfig } from "@/types/mock"
@@ -15,9 +15,10 @@ const adminApi = [
     url: '/api/user/login',
     type: 'post',
     response: (config: responseConfig) => {
-      const { username, password } = paramObj(config.body)
+      const { username } = paramObj(config.body)
       const token = tokens[username]?.token
-      if (token && password == tokens[username].password) {
+      // if (token && password == tokens[username].password) {
+      if (token) {
         return {
           code: 200,
           message: '登陆成功',

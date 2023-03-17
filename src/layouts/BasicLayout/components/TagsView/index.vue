@@ -225,7 +225,9 @@ onMounted(() => {
 .tags-view-container {
   height: 34px;
   width: 100%;
-  background: #fff;
+  background-image: radial-gradient(transparent 1px,#fff 1px);
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
   .tags-view-wrapper {

@@ -8,6 +8,7 @@ import Search from '@/components/HeaderSearch/index.vue'
 import ErrorLog from '@/components/ErrorLog/index.vue'
 import Theme from '@/components/Theme/index.vue'
 import Lang from './i18n/index.vue'
+import { ElMessage } from "element-plus";
 const router = useRouter()
 const toggleSideBar = () => {
   app.sidebar.opened = !app.sidebar.opened
@@ -16,7 +17,8 @@ const app = useAppStore()
 const user = useUserStore()
 
 const logout = () => {
-  user.logout().then(() => {
+  user.logout().then(rs => {
+    ElMessage.success(rs.message)
     router.replace('/login')
   })
 }
@@ -60,6 +62,10 @@ const logout = () => {
   overflow: hidden;
   position: relative;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  background-image: radial-gradient(transparent 1px,#fff 1px);
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
+  // background-color: #fff;
 
   .hamburger-container {
     line-height: 46px;

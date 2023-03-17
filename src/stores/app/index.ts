@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-16 20:42:29
+ * @LastEditTime: 2023-03-17 13:08:16
  * @LastEditors: Amber
  */
 import { defineStore } from 'pinia'
@@ -16,7 +16,6 @@ import settings from "@/setting"
 
 const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
 const isDark = useDark()
-
 export const useAppStore = defineStore(Names.APP, {
   state:() => ({
     sidebar: {
@@ -29,8 +28,9 @@ export const useAppStore = defineStore(Names.APP, {
     tagsView: tagsView,
     fixedHeader: fixedHeader,
     sidebarLogo: sidebarLogo,
-    theme: isDark ? ThemeType.Dark : ThemeType.Light,
-    lang: getStoreItem(localStorage.APP, 'lang') || settings.lang
+    theme: isDark.value ? ThemeType.dark : ThemeType.light,
+    lang: getStoreItem(localStorage.APP, 'lang') || settings.lang,
+    github: true
   }),
   // computed
   getters: {
@@ -58,7 +58,7 @@ export const useAppStore = defineStore(Names.APP, {
     },
     switchThemes() {
       const toggleDark = useToggle(isDark)
-      this.theme = toggleDark() ? ThemeType.Dark : ThemeType.Light
+      this.theme = toggleDark() ? ThemeType.dark : ThemeType.light
     }
   },
   persist: [
@@ -67,7 +67,7 @@ export const useAppStore = defineStore(Names.APP, {
       storage: localStorage
     },
     { 
-      paths: ['theme'],
+      paths: ['theme', 'github'],
       storage: sessionStorage
     }
   ]

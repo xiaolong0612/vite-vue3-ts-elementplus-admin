@@ -34,11 +34,11 @@
       <div style="position:relative">
         <div class="tips">
           <span>Username : admin</span>
-          <span>Password : 123456</span>
+          <span>Password : any</span>
         </div>
         <div class="tips">
           <span style="margin-right:18px;">Username : editor</span>
-          <span>Password : 123123</span>
+          <span>Password : any</span>
         </div>
       </div>
     </el-form>

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-16 17:24:59
- * @LastEditTime: 2023-03-16 21:07:33
+ * @LastEditTime: 2023-03-17 13:55:27
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
@@ -18,7 +18,9 @@ const app = useAppStore()
 
 const list = Object.keys(messages)
 
-const lang = ref(app.lang)
+console.log(app.lang)
+console.log(list)
+const lang = ref(app.lang.toString())
 
 const changeLang = () => {
   app.changeLang(lang.value as string)

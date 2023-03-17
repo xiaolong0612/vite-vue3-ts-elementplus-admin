@@ -79,6 +79,22 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/Echarts',
+    component: basicLayout,
+    redirect: '/Echarts/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/charts/index.vue'),
+        name: 'Echarts',
+        meta: {
+          title: 'Echarts',
+          icon: 'DocumentChecked'
+        }
+      }
+    ]
+  },
   componentsRouter,
   errorRouter,
   zipRouter,
