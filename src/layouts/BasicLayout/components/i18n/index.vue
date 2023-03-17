@@ -2,26 +2,31 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-16 17:14:52
- * @LastEditTime: 2023-03-16 21:43:27
+ * @LastEditTime: 2023-03-17 14:11:00
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
 import { useAppStore } from "@/stores/app"
 import i18n, { messages } from "@/locales"
 import { ElMessageBox } from "element-plus"
-import { useRouter } from "vue-router"
+import { useRouter, useRoute } from "vue-router"
 
 const $t = i18n.global.t
 const router = useRouter()
+const route = useRoute()
 const list = Object.keys(messages)
 
 const changeLang = (val: string) =>  {
-  ElMessageBox.confirm($t('views.i18n.changeTip'), 'Title', {
-    dangerouslyUseHTMLString: true,
-  }).then(() => {
+  if (route.fullPath !== '/i18n/index') {
+    ElMessageBox.confirm($t('views.i18n.changeTip'), 'Title', {
+      dangerouslyUseHTMLString: true,
+    }).then(() => {
+      useAppStore().changeLang(val)
+      router.push('/i18n/index')
+    })
+  } else {
     useAppStore().changeLang(val)
-    router.push('/i18n/index')
-  })
+  }
 }
 </script>
 <template>

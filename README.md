@@ -26,6 +26,11 @@ vue3
   - Exposed APIs for custom rendering
   - More advanced components are provided. Fragment component, Teleport component, suspend component
 
+tailwindcss
+- What is Tailwind CSS
+- - A utility first CSS framework that includes classes such as flex, pt-4, text center, and rotate-90, and can be combined directly in your markup to build any design.
+- Quickly build modern websites without leaving your HTML.
+
 
 Project purpose：
 
@@ -81,6 +86,7 @@ Online demo address：
   - Export PDF
   - Theme (dark or light)
   - i18n
+  - Echarts
 
 - More functions are still under development, please look forward to
 ```
@@ -93,26 +99,28 @@ Online demo address：
 admin
 ├─ .env.development			# 开发环境
 ├─ .env.production			# 开发本地本地
-├─ .env.staging			# 测试环境
+├─ .env.staging		    	# 测试环境
 ├─ README.md
-├─ dist			# 打包dist
-├─ mock			# mock服务
-├─ public			# 静态资源
-├─ src			# 源码
-│  ├─ api			# 接口请求
-│  ├─ assets			# 打包的资源
-│  ├─ components			# 公共组件
+├─ dist		            	# 打包dist
+├─ public		          	# 静态资源
+├─ src			            # 源码
+│  ├─ api		          	# 接口请求
+│  ├─ assets	      		# 打包的资源
+│  ├─ components	  		# 公共组件
+│  ├─ directives	  		# directives
 │  ├─ layouts			# 全局Layouts
+│  ├─ locales			# i18n
+│  ├─ mock			  # mockjs
 │  ├─ plugins			# 插件
 │  ├─ router			# 路由
 │  ├─ stores			# 全局store管理
 │  ├─ styles			# 全局样式
 │  ├─ types			# ts 声明
 │  ├─ utils			# 全局公共方法
-│ └─ views			# 所有业务页面
-├─ tailwind.config.js     	  # tailwind 配置
-├─ tsconfig.json     			 # ts 编译配置
-└─ vite.config.js    		      # vite 配置
+│  └─ views			# 所有业务页面
+├─ tailwind.config.js     	   # tailwind 配置
+├─ tsconfig.json     		    	 # ts 编译配置
+└─ vite.config.js    		       # vite 配置
 
 ```
 
@@ -128,6 +136,7 @@ Project technology:
 - typescript
 - sass
 - element-plus
+- tailwindcss
 
 ## Getting started
 
