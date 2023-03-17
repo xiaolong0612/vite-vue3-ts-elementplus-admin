@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-16 18:43:05
+ * @LastEditTime: 2023-03-17 13:34:55
  * @LastEditors: Amber
  */
 import { fileURLToPath, URL } from 'node:url'
@@ -49,6 +49,15 @@ export default defineConfig({
       mockPath: "./src/mock/",
     })
   ],
+  server: {
+    proxy: {// 跨域代理
+      '/chartsApi': {
+        target: 'https://echarts.apache.org', // 
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/chartsApi/, '')
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

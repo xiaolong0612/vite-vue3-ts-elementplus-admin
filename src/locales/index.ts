@@ -22,6 +22,8 @@ export const messages = {
   }
 }
 
+console.log(getStoreItem(localStorage.APP, 'lang') as string || settings.lang)
+
 // 创建 i18n
 const i18n = createI18n({
   legacy: false,
