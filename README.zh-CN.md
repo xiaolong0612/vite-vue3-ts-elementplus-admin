@@ -31,6 +31,10 @@ vue3
 
 - 提供了更先进的组件。Frament（片段）组件、Teleport（传送）组件、suspense（暂停）组件
 
+tailwindcss
+- 什么是Tailwind CSS
+- - 一个实用优先的 CSS 框架，包含 flex、pt-4、text-center 和 rotate-90 等类，可以直接在您的标记中组合以构建任何设计。
+- 无需离开您的HTML，即可快速建立现代网站。
 
 项目目的：
 
@@ -86,6 +90,7 @@ vue3
   - 导出PDF
   - 主题色 （暗黑、白天）
   - 国际化
+  - Echarts
 
 - 更多功能还在开发中，敬请期待
 ```
@@ -101,27 +106,29 @@ admin
 ├─ .env.staging			    # 测试环境
 ├─ README.md
 ├─ dist			            # 打包dist
-├─ mock			            # mock服务
 ├─ public		          	# 静态资源
 ├─ src			            # 源码
 │  ├─ api		          	# 接口请求
 │  ├─ assets		      	# 打包的资源
 │  ├─ components	  		# 公共组件
-│  ├─ layouts		      	# 全局Layouts
+│  ├─ directives	  		# 全局指令
+│  ├─ layouts		      	# 页面布局
+│  ├─ locales			      # i18n
+│  ├─ mock			        # mockjs
 │  ├─ plugins		      	# 插件
 │  ├─ router		      	# 路由
 │  ├─ stores		      	# 全局store管理
 │  ├─ styles		      	# 全局样式
 │  ├─ types		        	# ts 声明
 │  ├─ utils		        	# 全局公共方法
-│ └─ views		        	# 所有业务页面
+│  └─ views		        	# 所有业务页面
 ├─ tailwind.config.js   # tailwind 配置
 ├─ tsconfig.json     	  # ts 编译配置
 └─ vite.config.js    	  # vite 配置
 
 ```
 
-## HighLight
+## 亮点
 
 项目均已最新技术实现，Vue3配套升级全家桶和涉及的插件组件等
 
@@ -133,6 +140,8 @@ admin
 - typescript
 - sass
 - element-plus
+- tailwindcss
+
 ## 开发
 
 ```bash
