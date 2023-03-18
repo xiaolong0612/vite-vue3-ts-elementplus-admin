@@ -2,10 +2,10 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-10 17:50:24
- * @LastEditTime: 2023-03-17 11:34:01
+ * @LastEditTime: 2023-03-18 02:06:12
  * @LastEditors: Amber
  */
-import { createApp, type Directive } from 'vue'
+import { createApp } from 'vue'
 
 import App from './App.vue'
 import router from './router'

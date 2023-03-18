@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-15 02:19:50
- * @LastEditTime: 2023-03-15 03:05:39
+ * @LastEditTime: 2023-03-18 17:03:06
  * @LastEditors: Amber
 -->
 <script lang="ts" setup>
@@ -11,7 +11,7 @@ import { getArticles } from "@/api/articles/index"
 import type { ArticleDataModel } from "@/api/articles/types"
 import { formatJson, parseTime } from "@/utils"
 import Pagination from "@/components/Pagination/index.vue";
-import { exportTxt2Zip } from "@/utils/zip";
+import { exportTxt2Zip } from "@/utils/zip"
 
 const listQuery= reactive({
   page: 1,

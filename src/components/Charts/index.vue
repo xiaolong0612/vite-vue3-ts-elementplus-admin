@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-17 11:46:04
- * @LastEditTime: 2023-03-17 13:16:46
+ * @LastEditTime: 2023-03-18 01:20:56
  * @LastEditors: Amber
 -->
 <template>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang='ts' scoped>
-import { inject, ref, onMounted, watch } from 'vue'
+import { inject, ref, onMounted, watch, markRaw } from 'vue'
 import { useAppStore } from "@/stores/app"
 import { ThemeType } from "@/stores/app/type"
 const app = useAppStore()
@@ -31,10 +31,10 @@ const  props = defineProps({
 })
 const init = () => {
   if(myChart.value) myChart.value.dispose();  
-  myChart.value = echarts.init(chartDom.value, ThemeType[app.theme], {
+  myChart.value = markRaw(echarts.init(chartDom.value, ThemeType[app.theme], {
     locale: app.lang == 'zh-cn' ? 'ZH' : 'EN',
     height: props.height
-  });
+  }));
   myChart.value.setOption(props.options, true);
 }
 const resizeHandler = () => {
