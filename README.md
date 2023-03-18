@@ -1,94 +1,106 @@
-English | [简体中文](./README.zh-CN.md)
+简体中文 | [English](./README.en.md)
 
-> vite-vue3-ts-elementplus-admin is a management side template solution based on vite, vue3, ts, and element-plus. The project is written in the style of setup syntax sugar.
+> vite-vue3-ts-elementplus-admin 是一个管理端模板解决方案，它是基于vite、vue3、ts、element-plus，项目都是以setup语法糖风格编写。
 
-## Introduction
+## 简介
 
-The base version of the project originates from PanJiaChen vue-element-admin。
+项目的基础版本出自于源于花裤衩大佬的 vue-element-admin。
 
-Version：
+版本：
 
-vue2+js version：[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+vue2+js版本：[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 
-Merit：
+优点：
 
 vite
-  - Fast service startup, using native ESM files, without packaging.
-  - Lightweight and fast thermal overload, regardless of application size, is the ultimate fast module thermal overload (HMR)
-  - Rich functions, supporting out-of-the-box use of TypeScript, JSX, CSS, etc.
-  - True fragrance
+- 极速的服务启动，使用原生 ESM 文件，无需打包。
+- 轻量快速的热重载，无论应用程序大小如何，都始终极快的模块热重载（HMR）
+- 丰富的功能，对 TypeScript、JSX、CSS 等支持开箱即用。
+- 真香
 
 vue3
-  - The performance is 1.2~2 times faster than Vue2. The performance improvement is mainly achieved through the improvement of responsive system (vue3 uses proxy object to rewrite responsive) and compilation optimization (optimize compilation and rewrite virtual dom, optimize diff algorithm)
-  - Vue3 is compiled on demand, and its volume is smaller than Vue2. Compared with Vue2, the overall volume of Vue3 has become smaller. In addition to removing some unused APIs, it is also important that any function of Tree shading, such as ref, reactive, computed, etc., is only packaged when it is used. Unused modules have been removed, and the overall volume of packaging has become smaller
-  - Support composition API. Vue2 uses Options Api, while vue3 uses Composition Api
-  - Better support for TS. Completely good support for TypeScript. Type verification has become the quality assurance of Vue3's large-scale project development, and it is also the future trend of the front-end
-  - Exposed APIs for custom rendering
-  - More advanced components are provided. Fragment component, Teleport component, suspend component
+- 性能比Vue2快1.2~2倍。性能的提升主要是通过响应式系统的提升(vue3使用proxy对象重写响应式)以及编译优化（优化编译和重写虚拟dom、优化diff算法）来完成
+
+- Vue3 按需编译，体积比Vue2更小。相比Vue2，Vue3整体体积变小了，除了移出一些不常用的API，再重要的是Tree shanking任何一个函数，如ref、reactive、computed等，仅仅在用到的时候才打包，没用到的模块都被去掉，打包的整体体积变小
+
+- 支持组合API(Composition Api)。vue2使用Options Api(选项api)，而vue3使用Composition Api(组合api)
+
+- 更好的支持TS.完全良好的支持了TypeScript。类型校验成为了Vue3进行大型项目开发的质量保障，同时这也是面向了前端的未来趋势
+
+- 暴露了自定义渲染的API
+
+- 提供了更先进的组件。Frament（片段）组件、Teleport（传送）组件、suspense（暂停）组件
 
 tailwindcss
-- What is Tailwind CSS
-- - A utility first CSS framework that includes classes such as flex, pt-4, text center, and rotate-90, and can be combined directly in your markup to build any design.
-- Quickly build modern websites without leaving your HTML.
+- 什么是Tailwind CSS
+- - 一个实用优先的 CSS 框架，包含 flex、pt-4、text-center 和 rotate-90 等类，可以直接在您的标记中组合以构建任何设计。
+- 无需离开您的HTML，即可快速建立现代网站。
 
+项目目的：
 
-Project purpose：
-
-- Study vue3+ts
+- 学习vue3+ts
 - setup语法糖
 
-Online demo address：
+在线demo演示地址：
 
-## Related items
+## 相关项目
 
 
-### Ribbon
+### 功能
 
 ```text
-- User Management
-	- Login
-	- Logout
-	
-- Permission Authentication
-  - Page permission
-  - Directive permission
-  - Permission configuration page
-  - Two-step login
+- 用户管理
+  - 登录
+  - 注销
+  
+- 权限验证
+  - 页面权限
+  - 指令权限
+  - 权限配置页面
+  - 两步登录
 
-- Multi-environment build
+- 多环境构建
   - dev
   - prod
 
-- Global Features
-  - Dynamic sidebar (supports multi-level routing)
-  - Dynamic breadcrumb
-  - Tags-view (Tab page Support right-click operation)
-  - Mock data
-  - Responsive Sidebar
+- 全局功能
+  -动态侧边栏（支持多级路由）
+  -动态面包屑
+  -标记视图（选项卡页支持右键单击操作）
+  -模拟数据
+  -响应式提要栏
 
-- Components
-  - JSON Editor
-  - Configured form
-  - CountTo
+- 组件
+  - JSON编辑器
+  - 配置化表单
+  - CountTo（计数）
 
-- Excel
-  - Export zip
+- Excel表格
+  - 导出excel
+  - 导入excel
+  - 前端可视化excel
+  - 导出zip
 
-- Error Page
+- 表格
+  - 动态表格
+  - 拖拽表格
+  - 内联编辑
+  
+- 错误页面
   - 401
   - 404
 
-- Advanced Example
-  - Dashboard
-  - Error Log
-  - Clipboard
-  - Weather View
-  - Export PDF
-  - Theme (dark or light)
-  - i18n
+- 高级示例
+  - 仪表板
+  - 错误日志
+  - 剪贴板
+  - 天气视图
+  - 导出PDF
+  - 主题色 （暗黑、白天）
+  - 国际化
   - Echarts
 
-- More functions are still under development, please look forward to
+- 更多功能还在开发中，敬请期待
 ```
 
 
@@ -99,36 +111,36 @@ Online demo address：
 admin
 ├─ .env.development			# 开发环境
 ├─ .env.production			# 开发本地本地
-├─ .env.staging		    	# 测试环境
+├─ .env.staging			    # 测试环境
 ├─ README.md
-├─ dist		            	# 打包dist
+├─ dist			            # 打包dist
 ├─ public		          	# 静态资源
 ├─ src			            # 源码
 │  ├─ api		          	# 接口请求
-│  ├─ assets	      		# 打包的资源
+│  ├─ assets		      	# 打包的资源
 │  ├─ components	  		# 公共组件
-│  ├─ directives	  		# directives
-│  ├─ layouts			# 全局Layouts
-│  ├─ locales			# i18n
-│  ├─ mock			  # mockjs
-│  ├─ plugins			# 插件
-│  ├─ router			# 路由
-│  ├─ stores			# 全局store管理
-│  ├─ styles			# 全局样式
-│  ├─ types			# ts 声明
-│  ├─ utils			# 全局公共方法
-│  └─ views			# 所有业务页面
-├─ tailwind.config.js     	   # tailwind 配置
-├─ tsconfig.json     		    	 # ts 编译配置
-└─ vite.config.js    		       # vite 配置
+│  ├─ directives	  		# 全局指令
+│  ├─ layouts		      	# 页面布局
+│  ├─ locales			      # i18n
+│  ├─ mock			        # mockjs
+│  ├─ plugins		      	# 插件
+│  ├─ router		      	# 路由
+│  ├─ stores		      	# 全局store管理
+│  ├─ styles		      	# 全局样式
+│  ├─ types		        	# ts 声明
+│  ├─ utils		        	# 全局公共方法
+│  └─ views		        	# 所有业务页面
+├─ tailwind.config.js   # tailwind 配置
+├─ tsconfig.json     	  # ts 编译配置
+└─ vite.config.js    	  # vite 配置
 
 ```
 
-## HighLight
+## 亮点
 
-The project has been implemented with the latest technology, and Vue3 has upgraded the whole family bucket and the plug-in components involved
+项目均已最新技术实现，Vue3配套升级全家桶和涉及的插件组件等
 
-Project technology:
+项目采用技术:
 
 - vite
 - vue3 + setup语法糖
@@ -138,47 +150,47 @@ Project technology:
 - element-plus
 - tailwindcss
 
-## Getting started
+## 开发
 
 ```bash
-# clone the project
+# 克隆项目
 git clone https://github.com/xiaolong0612/vite-vue3-ts-elementplus-admin.git
 
-# enter the project directory
+# 进入项目目录
 cd vite-vue3-ts-elementplus-admin
 
-# install dependency
+# 安装依赖
 npm install
 
-# It is recommended that you do not directly use cnpm to install dependencies. There will be various weird bugs. You can solve the problem of slow downloading speed of npm by following operations
+# 建议不要直接使用 cnpm 安装依赖，会有各种诡异的 bug。可以通过如下操作解决 npm 下载速度慢的问题
 npm install --registry=https://registry.npm.taobao.org
 
-# develop
+# 启动服务
 npm run dev
 ```
 
-This will automatically open http://localhost:5174
+浏览器访问 http://localhost:5174
 
-## Build
+## 发布
 
 ```bash
-# build for production environment---Including code format check
+# 构建生产环境---含语法检查
 npm run build
 
-# build for production environment
+# 构建生产环境
 npm run build-only:prod
 
-# build for test environment
+# 构建测试环境
 npm run build-only:stage
 ```
 
-## Advanced
+## 其它
 
 ```bash
-# preview the release environment effect
+# 预览发布环境效果
 npm run preview
 
-# code format check
+# 代码格式检查
 npm run lint
 ```
 
@@ -191,7 +203,7 @@ Modern browsers and Internet Explorer 10+.
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | IE10, IE11, Edge                                             | last 2 versions                                              | last 2 versions                                              | last 2 versions                                              |
 
-## Discussion and exchange ( WeChat )
+## 讨论交流 ( 微信 )
 
   <p align="left">
   <a  target="_blank">

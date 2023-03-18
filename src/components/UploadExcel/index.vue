@@ -108,7 +108,7 @@ const readerData = (rawFile: File, colNone = 0) => {
     let sheetRef = worksheet['!ref']
     let refParse = (sheetRef as any).match(/[a-z]+|[0-9]+/ig)
     let col = refParse[3] - refParse[1] + 1
-    let row = refParse[2].charCodeAt() - refParse[0].charCodeAt() + 1
+    // let row = refParse[2].charCodeAt() - refParse[0].charCodeAt() + 1
 
     // 获取单元格合并数据并建立数组索引
     let merges = worksheet['!merges']
