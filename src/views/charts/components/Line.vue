@@ -2,11 +2,11 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-17 13:26:42
- * @LastEditTime: 2023-03-17 13:49:02
+ * @LastEditTime: 2023-03-18 19:24:36
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
-import { inject, reactive, ref } from 'vue'
+import { inject, ref } from 'vue'
 import EchartsView from '@/components/Charts/index.vue'
 import { lifeExpectancyTable } from "@/api/charts"
 
@@ -97,7 +97,6 @@ lifeExpectancyTable().then(rs => {
     },
     series: seriesList
   }
-  console.log(options)
 })
 </script>
 <template>

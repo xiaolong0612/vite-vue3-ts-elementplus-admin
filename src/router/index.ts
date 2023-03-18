@@ -3,6 +3,8 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import basicLayout from "@/layouts/BasicLayout/index.vue"
 
 import componentsRouter from "./modules/components"
+import tableRouter from "./modules/table"
+import excelRouter from "./modules/excel"
 import errorRouter from "./modules/error"
 import zipRouter from "./modules/zip"
 import clipboardRouter from "./modules/clipboard"
@@ -90,12 +92,14 @@ export const asyncRoutes = [
         name: 'Echarts',
         meta: {
           title: 'Echarts',
-          icon: 'DocumentChecked'
+          icon: 'PieChart'
         }
       }
     ]
   },
   componentsRouter,
+  tableRouter,
+  excelRouter,
   errorRouter,
   zipRouter,
   clipboardRouter,
@@ -110,7 +114,7 @@ export const asyncRoutes = [
         name: 'PDF',
         meta: {
           title: 'PDF',
-          icon: 'DocumentChecked'
+          icon: 'Printer'
         }
       }
     ]

@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-15 14:44:14
+ * @LastEditTime: 2023-03-18 03:24:46
+ * @LastEditors: Amber
+-->
 <script setup lang="ts">
 import { useUserStore } from "@/stores/user"
 import PanThumb from '@/components/PanThumb/index.vue'
@@ -81,7 +88,7 @@ const admin = useUserStore()
     background-color: #fff;
     margin: auto;
     box-shadow: none!important;
-    ::v-deep .pan-info {
+    :deep(.pan-info) {
       box-shadow: none!important;
     }
   }

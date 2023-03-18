@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from "vue-router"
 import { useAppStore } from "@/stores/app"
+import { ThemeType } from "@/stores/app/type"
 import { usePermissionStore } from "@/stores/permission"
 import variables from '@/styles/_variables.module.scss'
 import Logo from './Logo.vue'
@@ -33,7 +34,7 @@ const activeMenu = computed(() => {
         id="slider"
         :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="app.theme ? variables.menuBg : variables.darkBg"
+        :background-color="app.theme === ThemeType.dark ? variables.darkBg : variables.menuBg"
         :text-color="variables.menuText"
         :unique-opened="false"
         :active-text-color="variables.menuActiveText"

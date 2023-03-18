@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDialog: typeof import('element-plus/es')['ElDialog']
@@ -65,6 +66,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SchemaForm: typeof import('./src/components/SchemaForm/index.vue')['default']
     Theme: typeof import('./src/components/Theme/index.vue')['default']
+    UploadExcel: typeof import('./src/components/UploadExcel/index.vue')['default']
     Weather: typeof import('./src/components/Weather/index.vue')['default']
     'Weather.vue': typeof import('./src/components/Weather.vue/index.vue')['default']
   }

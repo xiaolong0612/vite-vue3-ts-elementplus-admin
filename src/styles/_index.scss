@@ -82,3 +82,10 @@
 .multiselect--active {
   z-index: 1000 !important;
 }
+
+// 拖拽table
+.sortable-ghost {
+  opacity: 0.8;
+  color: #fff !important;
+  background: #42b983 !important;
+}
