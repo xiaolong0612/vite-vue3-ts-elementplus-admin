@@ -3,7 +3,7 @@
  * @Author: Amber
  * @Date: 2023-01-08 19:32:16
  * @LastEditors: Amber
- * @LastEditTime: 2023-03-16 13:34:04
+ * @LastEditTime: 2023-03-19 13:36:57
 -->
 <template>
   <div class="app-container">
@@ -124,7 +124,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, reactive, toRefs, ref, nextTick, getCurrentInstance } from 'vue'
+import { computed, defineComponent, onBeforeMount, reactive, toRefs, ref, nextTick, getCurrentInstance, onMounted } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 import { getRoutes, getRoles, delRole, updateRole, createRole } from '@/api/roles'
 import path from 'path-browserify'
@@ -351,9 +351,11 @@ export default defineComponent({
       })
     }
 
-    onBeforeMount(() => {
-      getServiceRoutes()
-      getRolesList()
+    onMounted(() => {
+      setTimeout(() => {
+        getServiceRoutes()
+        getRolesList()
+      }, 200);
     })
 
     const routesTreeData = computed(() => generateTreeData(state.reshapedRoutes as any as RouteRecordRaw[]))

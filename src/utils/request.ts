@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: Amber
+ * @Date: 2023-03-13 19:43:46
+ * @LastEditTime: 2023-03-19 13:34:58
+ * @LastEditors: Amber
+ */
 import axios from 'axios'
 import type { AxiosRequestConfig } from 'axios'
 import type { RootResponseType } from '@/types/axios'
@@ -10,9 +17,8 @@ const instance = axios.create({
 const request = async <T = any>(config: AxiosRequestConfig): Promise<RootResponseType<T>> => {
   try {
     const { data } = await instance.request<RootResponseType<T>>(config)
-    console.log(data)
     // success
-    if ([200].includes(data.code)) {
+    if ([200].includes(data.code) || config.url?.includes('/chartsApi')) {
       console.log(data.message)
     } else {
       // fail

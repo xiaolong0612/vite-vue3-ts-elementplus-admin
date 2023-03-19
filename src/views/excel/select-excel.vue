@@ -78,7 +78,9 @@ const tableData = reactive<ArticleDataModel>({
 const multipleSelection = ref<number[]>([])
 
 onMounted(() => {
-  getList()
+  setTimeout(() => {
+    getList()
+  }, 200);
 })
 
 const getList = () => {

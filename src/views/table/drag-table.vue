@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-17 21:52:48
- * @LastEditTime: 2023-03-18 02:02:28
+ * @LastEditTime: 2023-03-19 13:23:30
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
@@ -44,7 +44,9 @@ const getList = () => {
 }
 
 onMounted(() => {
-  getList()
+  setTimeout(() => {
+    getList()
+  }, 200);
 })
 </script>
 <template>
