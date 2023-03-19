@@ -85,7 +85,9 @@ const tableData = reactive<ArticleDataModel>({
 })
 
 onMounted(() => {
-  getList()
+  setTimeout(() => {
+    getList()
+  }, 200);
 })
 
 const getList = () => {

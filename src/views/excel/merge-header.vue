@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Amber
  * @Date: 2023-03-18 02:04:17
- * @LastEditTime: 2023-03-18 17:21:45
+ * @LastEditTime: 2023-03-19 13:25:21
  * @LastEditors: Amber
 -->
 <script setup lang="ts">
@@ -24,7 +24,9 @@ const tableData = reactive<ArticleDataModel>({
 })
 
 onMounted(() => {
-  getList()
+  setTimeout(() => {
+    getList()
+  }, 200);
 })
 
 const getList = () => {

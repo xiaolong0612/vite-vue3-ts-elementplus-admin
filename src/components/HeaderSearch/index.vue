@@ -36,7 +36,7 @@ watch(() => show.value, (val) => {
 const click = () => {
   show.value = !show.value
   if (show.value) {
-    searchSelectRef.value && searchSelectRef.value.focus()
+    searchSelectRef.value && (searchSelectRef.value as any).focus()
   }
 }
 const close = () => {
@@ -68,7 +68,7 @@ const initFuse = (list:any) => {
   })
 }
 const generateRoutes = (routes:any, basePath = '/', prefixTitle = []):any => {
-  let res = []
+  let res: any[] = []
 
   for (const router of routes) {
     if (router.hidden) { continue }
@@ -79,7 +79,7 @@ const generateRoutes = (routes:any, basePath = '/', prefixTitle = []):any => {
     }
 
     if (router.meta && router.meta.title) {
-      data.title = [...data.title, router.meta.title]
+      data.title = [...data.title, router.meta.title] as any
 
       if (router.redirect !== 'noRedirect') {
         res.push(data)
@@ -117,7 +117,7 @@ const querySearch = (query:string) => {
       class="header-search-select"
       @change="change"
     >
-      <el-option v-for="item in options" :key="item.item.path" :value="item.item" :label="item.item.title.join(' > ')" />
+      <el-option v-for="item in options" :key="(item as any).item.path" :value="(item as any).item" :label="(item as any).item.title.join(' > ')" />
     </el-select>
   </div>
 </template>
